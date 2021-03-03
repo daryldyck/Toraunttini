@@ -27,6 +27,18 @@ body {}
     justify-content: space-around;
 }
 
+.col-2 {
+    text-align: center;
+    flex-basis: 40%;
+    min-width: 250px;
+    margin: 20px 20px;
+    margin-bottom: 75px;
+}
+
+.col-2 img {
+    max-width: 350px;
+}
+
 a {
     text-decoration: none;
     color: rgb(255, 255, 255);
@@ -70,34 +82,26 @@ p {
 
 .box {
     background: #FFF;
-    justify-items: center;
-    position: relative;
-    text-align: center;
-    padding: 50px 35px;
-    transition: 0.5s;
-    margin: 0 20px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 100px rgba(0, 0, 0, 0.05) inset;
+    box-shadow: 0 -0.5px 3px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1), 0 16px 16px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+    display: inline-block;
+    color: black;
+    background: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-top: 5px;
+    padding-bottom: 7px;
+    border-radius: 1px;
+    border: 2px solid #003cff;
+    box-shadow: 0 -0.5px 3px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1);
     transition: 0.5s;
 }
 
-.box:before, .box:after {
-    z-index: -1;
-    position: absolute;
-    content: "";
-    bottom: 15px;
-    left: 10px;
-    width: 100%;
-    max-width: 500px;
-    top: 80%;
-    background: rgb(0, 0, 0, 0.4);
-    box-shadow: 0 15px 15px rgb(0, 0, 0, 0.4);
-    transform: rotate(-3deg);
-}
-
-.box:after {
-    transform: rotate(3deg);
-    right: 10px;
-    left: auto;
+.btn:hover {
+    background: #ff00d480;
+    box-shadow: 0 -0.5px 3px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* --------------- SLIDE SHOW--------------- */
@@ -443,10 +447,113 @@ nav .icon-burger .line {
 
 .login {
     width: 100%;
-    height: 80vh;
+    min-height: 80vh;
+}
+
+.login img {
+    width: 100%;
+}
+
+.login-form-btn {
+    display: inline-block;
 }
 
 .login-container {
+    width: 350px;
+    height: 350px;
+    position: relative;
+    text-align: center;
+    padding: 20px 0;
+    margin: auto;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.login-container:hover {
+    box-shadow: 0 -0.5px 3px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-container span {
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+    width: 100px;
+    display: inline-block;
+}
+
+.login-container form {
+    max-width: fit-content;
+    position: absolute;
+    transition: transform 1s;
+}
+
+form input {
+    width: 80%;
+    height: 30px;
+    margin: 5px 2px;
+    padding: 0 10px;
+    border: 1px solid rgb(218, 218, 218);
+    box-shadow: 0 -0.5px 3px rgba(0, 0, 0, 0.05), 0 2px 2px rgba(0, 0, 0, 0.05), 0 4px 4px rgba(0, 0, 0, 0.05);
+}
+
+form input:focus {
+    border: none;
+    outline: 1px solid #ff00d4;
+    box-shadow: 0 -0.5px 3px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11);
+}
+
+form .btn {
+    margin-bottom: 0px;
+    width: 86%;
+    cursor: pointer;
+}
+
+form.btn:focus {
+    outline: none;
+}
+
+#regForm {
+    margin-top: 10px;
+    left: -350px;
+}
+
+#regForm .btn {
+    margin-top: 20px;
+}
+
+#loginForm {
+    margin-top: 50px;
+    left: 0;
+}
+
+#loginForm .btn {
+    margin-top: 50px;
+}
+
+form a {
+    color: #000;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+#login-indicator {
+    width: 100px;
+    height: 3px;
+    border: none;
+    background-color: #003cff;
+    margin-top: 8px;
+    transform: translateX(100px);
+    transition: transform 1s;
+}
+
+/* --------------- ACCOUNT --------------- */
+
+.account {
+    width: 100%;
+    height: 80vh;
+}
+
+.account-container {
     width: 500px;
     height: 250px;
 }
@@ -454,8 +561,8 @@ nav .icon-burger .line {
 /* --------------- RESPONSIVE SCREEN ADJSUTMENTS--------------- */
 
 @media screen and (max-width: 750px) {
-    .box:before, .box:after {
-        max-width: 370px;
+    .col-2 {
+        flex-basis: 100%;
     }
     .footer-col-1, .footer-col-2, .footer-col-3 {
         flex-basis: 100%;
