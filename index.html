@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restuarant Name</title>
+
+    <script text="text/javascript" src="js/index.js" defer="true"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- --------------- HEADER--------------- -->
+    <div class="header">
+
+        <!-- --------------- SLIDE SHOW--------------- -->
+        <div class="slider">
+            <div class="slides">
+
+                <input type="radio" name="radio-btn" id="radio1" class="radio">
+                <input type="radio" name="radio-btn" id="radio2" class="radio">
+                <input type="radio" name="radio-btn" id="radio3" class="radio">
+                <input type="radio" name="radio-btn" id="radio4" class="radio">
+
+                <div class="slide first">
+                    <img src="images/1.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <img src="images/2.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <img src="images/3.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <img src="images/4.jpg" alt="">
+                </div>
+
+            </div>
+
+            <div class="navigation-manual">
+                <label for="radio1" class="manual-btn" id="manual-btn1" onclick="resetSlideShow(0)"></label>
+                <label for="radio2" class="manual-btn" id="manual-btn2" onclick="resetSlideShow(1)"></label>
+                <label for="radio3" class="manual-btn" id="manual-btn3" onclick="resetSlideShow(2)"></label>
+                <label for="radio4" class="manual-btn" id="manual-btn4" onclick="resetSlideShow(3)"></label>
+            </div>
+
+        </div>
+
+        <!-- --------------- NAV MENU--------------- -->
+        <div class="navBar">
+            <div class="navBar-container">
+
+                <a href="index.html"><img src="images/logo.svg" class="navBar-logo"></a>
+
+                <nav>
+
+                    <input id="nav-toggle" type="checkbox">
+
+                    <ul class="menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+
+                    <label for="nav-toggle" class="icon-burger">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </label>
+
+                </nav>
+
+                <a href="cart.html"><img src="images/cart.svg" class="navBar-cart-img"></a>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- --------------- FEATURE--------------- -->
+    <div class="feature" id="featuresContainer">
+        <div class="container">
+
+            <div class="title-container">
+                <hr class="title-decor">
+                <h2 class="title">Featured Dishes</h2>
+                <hr class="title-decor">
+            </div>
+
+            <div class="row" id="featuresItems">
+
+                <!-- Features added here... via Javascript -->
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- --------------- FOOTER--------------- -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="footer-col-1">
+                    <img src="images/logo.svg">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse recusandae officia veritatis veniam
+                        error inventore nobis consequuntur!</p>
+                </div>
+
+                <div class="footer-col-2">
+                    <h3>Download Our App</h3>
+                    <p>Download App for Android or iOS</p>
+                    <div class="app-logo">
+                        <img src="images/play-store.png">
+                        <img src="images/app-store.png">
+                    </div>
+                </div>
+
+                <div class="footer-col-3">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="">Facebook</a></li>
+                        <li><a href="">Twitter</a></li>
+                        <li><a href="">Instagram</a></li>
+                        <li><a href="">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr>
+            <p class="copyright">&copy; Copyright 2021</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

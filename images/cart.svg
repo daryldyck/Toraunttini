@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<svg version="1.1"
+	 id="svg2989" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24"
+	 style="enable-background:new 0 0 24 24;" xml:space="preserve">
+
+<style type="text/css">
+	.cart {
+		fill:#FFFFFF;
+		}
+</style>
+
+<sodipodi:namedview  bordercolor="#666666" borderopacity="1" gridtolerance="10" guidetolerance="10" id="namedview2995" inkscape:current-layer="svg2989" inkscape:cx="896" inkscape:cy="896" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-height="480" inkscape:window-maximized="0" inkscape:window-width="640" inkscape:window-x="0" inkscape:window-y="25" inkscape:zoom="0.13169643" objecttolerance="10" pagecolor="#ffffff" showgrid="false">
+	</sodipodi:namedview>
+
+<g id="g2991" transform="matrix(1,0,0,-1,68.338983,1209.4915)">
+	<path id="path2993" inkscape:connector-curvature="0" class="cart" d="M-58.9,1189.9c0-0.5-0.2-0.9-0.5-1.2
+		c-0.3-0.3-0.7-0.5-1.2-0.5s-0.9,0.2-1.2,0.5c-0.3,0.3-0.5,0.7-0.5,1.2c0,0.5,0.2,0.9,0.5,1.2c0.3,0.3,0.7,0.5,1.2,0.5
+		s0.9-0.2,1.2-0.5C-59,1190.7-58.9,1190.3-58.9,1189.9z M-46.9,1189.9c0-0.5-0.2-0.9-0.5-1.2c-0.3-0.3-0.7-0.5-1.2-0.5
+		c-0.5,0-0.9,0.2-1.2,0.5c-0.3,0.3-0.5,0.7-0.5,1.2c0,0.5,0.2,0.9,0.5,1.2c0.3,0.3,0.7,0.5,1.2,0.5c0.5,0,0.9-0.2,1.2-0.5
+		C-47,1190.7-46.9,1190.3-46.9,1189.9z M-45.1,1204.4v-6.9c0-0.2-0.1-0.4-0.2-0.6s-0.3-0.3-0.5-0.3l-14-1.6c0-0.1,0-0.2,0.1-0.3
+		c0-0.1,0.1-0.2,0.1-0.4c0-0.1,0-0.2,0-0.3c0-0.1-0.1-0.4-0.3-0.9h12.3c0.2,0,0.4-0.1,0.6-0.3c0.2-0.2,0.3-0.4,0.3-0.6
+		s-0.1-0.4-0.3-0.6c-0.2-0.2-0.4-0.3-0.6-0.3h-13.7c-0.2,0-0.4,0.1-0.6,0.3c-0.2,0.2-0.3,0.4-0.3,0.6c0,0.1,0,0.3,0.1,0.5
+		c0.1,0.2,0.2,0.5,0.4,0.8c0.2,0.3,0.3,0.5,0.3,0.5l-2.4,11h-2.7c-0.2,0-0.4,0.1-0.6,0.3c-0.2,0.2-0.3,0.4-0.3,0.6
+		c0,0.2,0.1,0.4,0.3,0.6c0.2,0.2,0.4,0.3,0.6,0.3h3.4c0.1,0,0.3,0,0.4-0.1c0.1-0.1,0.2-0.1,0.3-0.2c0.1-0.1,0.1-0.2,0.2-0.3
+		c0-0.1,0.1-0.3,0.1-0.4c0-0.1,0-0.2,0.1-0.4s0.1-0.3,0.1-0.3H-46c0.2,0,0.4-0.1,0.6-0.3C-45.2,1204.9-45.1,1204.7-45.1,1204.4z"/>
+</g>
+</svg>
