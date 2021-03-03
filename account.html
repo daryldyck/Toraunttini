@@ -8,7 +8,6 @@
     <title>Restuarant Name</title>
 
     <script text="text/javascript" src="js/auth.js" defer="true"></script>
-    <script text="text/javascript" src="js/login.js" defer="true"></script>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@200;300;400;500;600;700;800;900&display=swap"
@@ -54,56 +53,20 @@
 
 
 
-    <!-- --------------- LOGIN--------------- -->
-    <div class="login">
+    <!-- --------------- ACCOUNT--------------- -->
+    <div class="account">
         <div class="container">
 
             <div class="title-container">
                 <hr class="title-decor">
-                <h2 class="title">Login</h2>
+                <h2 class="title">Account</h2>
                 <hr class="title-decor">
             </div>
 
             <div class="row">
 
-                <div class="col-2">
-                    <div class="box login-container">
-                        <div class="login-form-btn">
-                            <span onclick="moveToRegisterForm()">Register</span>
-                            <span onclick="moveToLoginForm()">Login</span>
-                            <hr id="login-indicator">
-                        </div>
+                <div class="box account-container">
 
-                        <form id="regForm" method="POST" onsubmit="register()" action="index.html" name="registerInfo">
-                            <input type="text" name="username" placeholder="Username" id="userName" required>
-                            <input type="email" name="email" placeholder="Email" required>
-                            <input type="password" name="password" placeholder="Password" id="password"
-                                style="width: 36%;" autocomplete="new-password" minlength="6" required>
-                            <input type="password" name="confirmPassword" placeholder="Confirm Password"
-                                id="confirmPassword" style="width: 36%;" minlength="6" required>
-                            <input type="text" name="firstName" placeholder="First Name" style="width: 36%;" required>
-                            <input type="text" name="lastName" placeholder="Last Name" style="width: 36%;" required>
-                            <input type="tel" name="phone" placeholder="Phone" required>
-                            <input type="text" name="address" placeholder="Address" required>
-
-                            <button type="submit" class="btn">Register</button>
-                        </form>
-
-                        <form id="loginForm" method="POST"
-                            onsubmit="login(document.forms['loginInfo']['loginUsername'].value)" action="index.html"
-                            name="loginInfo" required>
-                            <input type="text" placeholder="Username" name="loginUsername" id="loginUsername" required>
-                            <input type="password" placeholder="Password" name="loginPassword" id="loginPassword"
-                                autocomplete="new-password" minlength="6" required>
-                            <button type="submit" class="btn">Login</button>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="col-2">
-                    <div class="login-img">
-                        <img src="images/martinis.png" class="box">
-                    </div>
                 </div>
 
             </div>
