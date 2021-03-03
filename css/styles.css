@@ -77,6 +77,7 @@ p {
     transition: 0.5s;
     margin: 0 20px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 100px rgba(0, 0, 0, 0.05) inset;
+    transition: 0.5s;
 }
 
 .box:before, .box:after {
@@ -86,8 +87,8 @@ p {
     bottom: 15px;
     left: 10px;
     width: 100%;
-    top: 80%;
     max-width: 500px;
+    top: 80%;
     background: rgb(0, 0, 0, 0.4);
     box-shadow: 0 15px 15px rgb(0, 0, 0, 0.4);
     transform: rotate(-3deg);
@@ -264,6 +265,11 @@ nav .menu {
     margin-left: 25px;
     width: 30px;
     height: 30px;
+}
+
+.navBar-cart-img:hover {
+    /* filter is used to change color of svg */
+    filter: invert(42%) sepia(100%) saturate(7085%) hue-rotate(306deg) brightness(112%) contrast(124%);
 }
 
 /* --------------- NAV BURGER ICON--------------- */
@@ -448,6 +454,9 @@ nav .icon-burger .line {
 /* --------------- RESPONSIVE SCREEN ADJSUTMENTS--------------- */
 
 @media screen and (max-width: 750px) {
+    .box:before, .box:after {
+        max-width: 370px;
+    }
     .footer-col-1, .footer-col-2, .footer-col-3 {
         flex-basis: 100%;
     }
