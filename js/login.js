@@ -1,4 +1,4 @@
-// < !-- ----------- LOGIN TOGGLE FORM------------ -->
+// < !-- ----------- LOGIN TOGGLE FORM ------------ -->
 
 var loginForm = document.getElementById("loginForm");
 var regForm = document.getElementById("regForm");
@@ -18,16 +18,7 @@ function moveToLoginForm()
     indicator.style.transform = "translateX(100px)";
 }
 
-function user(username, email, password, firstName, lastName, phone, address)
-{
-    this.username = username;
-    this.email = email;
-    this.password = password;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.phone = phone;
-    this.address = address;
-}
+// < !-- ----------- REGISTER/LOGIN ------------ -->
 
 var userName = document.getElementById("userName");
 var password = document.getElementById("password");
