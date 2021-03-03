@@ -1,3 +1,14 @@
+function user(username, email, password, firstName, lastName, phone, address)
+{
+    this.username = username;
+    this.email = email;
+    this.password = password;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.phone = phone;
+    this.address = address;
+}
+
 var userList = [];
 var currentUser;
 
@@ -26,6 +37,5 @@ function logout()
 {
     console.log("logout");
     localStorage.removeItem("toraunttini_currentUser");
-    document.getElementById("nav-login").innerHTML = "Login";
-    document.getElementById("nav-login").href = "login.html";
+    window.location.replace("./index.html");
 }
