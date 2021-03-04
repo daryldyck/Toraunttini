@@ -81,27 +81,45 @@
                         </div>
 
                         <form id="regForm" method="POST" onsubmit="register()" action="index.html" name="registerInfo">
-                            <input type="text" name="username" placeholder="Username" id="userName" required>
-                            <input type="email" name="email" placeholder="Email" required>
-                            <input type="password" name="password" placeholder="Password" id="password"
-                                style="width: 36%;" autocomplete="new-password" minlength="6" required>
-                            <input type="password" name="confirmPassword" placeholder="Confirm Password"
-                                id="confirmPassword" style="width: 36%;" minlength="6" required>
-                            <input type="text" name="firstName" placeholder="First Name" style="width: 36%;" required>
-                            <input type="text" name="lastName" placeholder="Last Name" style="width: 36%;" required>
-                            <input type="tel" name="phone" placeholder="Phone" minlength="10" required>
-                            <input type="text" name="address" placeholder="Address" minlength="2" required>
+                            <div>
 
-                            <button type="submit" class="btn">Register</button>
+                                <input type="text" name="username" placeholder="Username" id="userName" required>
+                                <input type="email" name="email" placeholder="Email" required>
+
+                                <div style="display: flex;">
+                                    <input type="password" name="password" placeholder="Password" id="password"
+                                        autocomplete="new-password" minlength="6" required>
+                                    <span style="width: 10px;"></span>
+                                    <input type="password" name="confirmPassword" placeholder=" Confirm Password"
+                                        id="confirmPassword" minlength="6" required>
+                                </div>
+
+                                <div style="display: flex;">
+                                    <input type="text" name="firstName" placeholder=" First Name" required>
+                                    <span style="width: 10px;"></span>
+                                    <input type="text" name="lastName" placeholder=" Last Name" required>
+                                </div>
+
+                                <input type="tel" name="phone" placeholder=" Phone" minlength="10" required>
+                                <input type="text" name="address" placeholder=" Address" minlength="2" required>
+
+                                <button type="submit" class="btn">Register</button>
+                            </div>
                         </form>
 
                         <form id="loginForm" method="POST"
                             onsubmit="login(document.forms['loginInfo']['loginUsername'].value)" action="index.html"
                             name="loginInfo" required>
-                            <input type="text" placeholder="Username" name="loginUsername" id="loginUsername" required>
-                            <input type="password" placeholder="Password" name="loginPassword" id="loginPassword"
-                                autocomplete="new-password" minlength="6" required>
-                            <button type="submit" class="btn">Login</button>
+                            <div>
+
+                                <input type="text" placeholder="Username" name="loginUsername" id="loginUsername"
+                                    required>
+                                <input type="password" placeholder="Password" name="loginPassword" id="loginPassword"
+                                    autocomplete="new-password" minlength="6" required>
+
+                                <button type="submit" class="btn">Login</button>
+
+                            </div>
                         </form>
                     </div>
                 </div>
