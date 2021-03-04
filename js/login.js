@@ -6,8 +6,8 @@ var indicator = document.getElementById("login-indicator");
 
 function moveToRegisterForm()
 {
-    regForm.style.transform = "translateX(350px)";
-    loginForm.style.transform = "translateX(350px)";
+    regForm.style.transform = "translateX(300px)";
+    loginForm.style.transform = "translateX(300px)";
     indicator.style.transform = "translateX(0px)";
 }
 

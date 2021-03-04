@@ -35,7 +35,7 @@ body {}
     text-align: center;
     flex-basis: 40%;
     min-width: 250px;
-    margin: 20px 20px;
+    /* margin: 20px 20px; */
     margin-bottom: 75px;
 }
 
@@ -545,8 +545,8 @@ nav .icon-burger .line {
 
 .login img {
     width: 100%;
-    min-width: 350px;
-    margin: 0px 20px
+    /* min-width: 350px; */
+    /* margin: 0px 20px */
 }
 
 .login-form-btn {
@@ -554,7 +554,7 @@ nav .icon-burger .line {
 }
 
 .login-container {
-    width: 350px;
+    width: 300px;
     height: 350px;
     position: relative;
     text-align: center;
@@ -609,7 +609,7 @@ form.btn:focus {
 
 #regForm {
     margin-top: 10px;
-    left: -350px;
+    left: -300px;
 }
 
 #regForm .btn {
@@ -649,7 +649,7 @@ form a {
 }
 
 .account-container {
-    width: 350px;
+    width: auto;
     height: 370px;
     position: relative;
     text-align: center;
@@ -665,8 +665,8 @@ form a {
 
 .account img {
     width: 100%;
-    min-width: 350px;
-    margin: 0px 20px
+    /* min-width: 350px; */
+    /* margin: 0px 20px */
 }
 
 .account-username {
