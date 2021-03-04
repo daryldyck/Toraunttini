@@ -82,25 +82,34 @@
                     <div class="box account-container">
 
                         <form id="accountForm" onsubmit="saveAccount();return false" name="accountInfo">
+                            <div>
+                                <div class="account-username">
+                                    <label>Username:</label>
+                                    <label id="username">username</label>
+                                </div>
 
-                            <div class="account-username">
-                                <label>Username:</label>
-                                <label id="username">username</label>
+                                <input type="email" name="email" placeholder="Email" required>
+
+                                <div style="display: flex;">
+                                    <input type="password" name="password" placeholder="Password" id="password"
+                                        autocomplete="new-password" minlength="6" required>
+                                    <span style="width: 10px;"></span>
+                                    <input type="password" name="confirmPassword" placeholder="Confirm Password"
+                                        id="confirmPassword" minlength="6" required>
+                                </div>
+
+                                <div style="display: flex;">
+                                    <input type="text" name="firstName" placeholder="First Name" required>
+                                    <span style="width: 10px;"></span>
+                                    <input type="text" name="lastName" placeholder="Last Name" required>
+                                </div>
+                                <input type="tel" name="phone" placeholder="Phone" required>
+                                <input type="text" name="address" placeholder="Address" minlength="2" required>
+
+                                <button type="submit" class="btn">Save Account</button>
+                                <button type="button" class="btn" onclick="deleteAccount()">Delete Account</button>
+                                <button type="button" class="btn" onclick="logout()">Logout</button>
                             </div>
-
-                            <input type="email" name="email" placeholder="Email" required>
-                            <input type="password" name="password" placeholder="Password" id="password"
-                                style="width: 36%;" autocomplete="new-password" minlength="6" required>
-                            <input type="password" name="confirmPassword" placeholder="Confirm Password"
-                                id="confirmPassword" style="width: 36%;" minlength="6" required>
-                            <input type="text" name="firstName" placeholder="First Name" style="width: 36%;" required>
-                            <input type="text" name="lastName" placeholder="Last Name" style="width: 36%;" required>
-                            <input type="tel" name="phone" placeholder="Phone" required>
-                            <input type="text" name="address" placeholder="Address" minlength="2" required>
-
-                            <button type="submit" class="btn">Save Account</button>
-                            <button type="button" class="btn" onclick="deleteAccount()">Delete Account</button>
-                            <button type="button" class="btn" onclick="logout()">Logout</button>
                         </form>
 
                     </div>
