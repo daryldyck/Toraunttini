@@ -39,3 +39,17 @@ function logout()
     localStorage.removeItem("toraunttini_currentUser");
     window.location.replace("./index.html");
 }
+
+
+// code for locking body scroll
+function lockScroll()
+{
+    if ($('body').hasClass('lock-scroll'))
+    {
+        $('body').removeClass('lock-scroll');
+    }
+    else
+    {
+        $('body').addClass('lock-scroll');
+    }
+}
