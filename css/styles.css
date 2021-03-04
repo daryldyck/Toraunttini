@@ -7,6 +7,10 @@
 
 body {}
 
+.lock-scroll {
+    overflow: hidden;
+}
+
 .header {
     position: relative;
     width: 100%;
@@ -332,7 +336,7 @@ nav .icon-burger {
 }
 
 nav .icon-burger .line {
-    width: 25px;
+    width: 27px;
     height: 2.5px;
     background: white;
     margin: 6px;
@@ -721,10 +725,10 @@ form a {
         display: block;
     }
     nav :checked~.icon-burger .line:nth-child(1) {
-        transform: translateY(8.75px) rotate(225deg);
+        transform: translateY(9px) rotate(225deg);
     }
     nav :checked~.icon-burger .line:nth-child(3) {
-        transform: translateY(-8.75px) rotate(-225deg);
+        transform: translateY(-9px) rotate(-225deg);
     }
     nav :checked~.icon-burger .line:nth-child(2) {
         opacity: 0;
