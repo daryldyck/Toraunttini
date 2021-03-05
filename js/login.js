@@ -28,7 +28,7 @@ function validateUserName()
 {
     console.log("validateUserName");
 
-    if (userList.some(elem => elem.username === userName.value))
+    if (userList.some(elem => elem.username === userName.value.toLowerCase()))
     {
         userName.setCustomValidity("Username already exists.");
     }
@@ -55,8 +55,8 @@ confirmPassword.onkeyup = validatePassword;
 
 function register()
 {
-    var username = document.forms["registerInfo"]["username"].value;
-    var email = document.forms["registerInfo"]["email"].value;
+    var username = document.forms["registerInfo"]["username"].value.toLowerCase();
+    var email = document.forms["registerInfo"]["email"].value.toLowerCase();
     var password = document.forms["registerInfo"]["password"].value;
     var firstName = document.forms["registerInfo"]["firstName"].value;
     var lastName = document.forms["registerInfo"]["lastName"].value;
@@ -76,7 +76,7 @@ function validateUserExists()
 {
     console.log("validateUserExists");
 
-    if (!userList.some(elem => elem.username === loginUsername.value))
+    if (!userList.some(elem => elem.username === loginUsername.value.toLowerCase()))
     {
         loginUsername.setCustomValidity("Username does not exist.");
     }
@@ -89,7 +89,7 @@ function validateUserExists()
 function authorize()
 {
     console.log("authorize");
-    var username = document.forms["loginInfo"]["loginUsername"].value;
+    var username = document.forms["loginInfo"]["loginUsername"].value.toLowerCase();
     var password = document.forms["loginInfo"]["loginPassword"].value;
 
     var loginUser = userList.find(elem => elem.username === username);
