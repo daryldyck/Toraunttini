@@ -56,19 +56,18 @@ function setActiveRadio()
 }
 
 // ------------------ LOAD MENU FOR FEATURE ------------------ //
-const menuURL = "https://gist.githubusercontent.com/skd09/8d8a685ffbdae387ebe041f28384c13c/raw/8fdfa7fa395452c7b8ca78c9c6ae7010955dc9ac/menu.json"
+const menuURL = "https://gist.githubusercontent.com/skd09/8d8a685ffbdae387ebe041f28384c13c/ra/26e97cec1e18243e3d88c90d78d2886535a4b3a6/menu.json"
 var featuresQty = 3;
 
 $.ajax(
     {
         type: "GET",
-        url: "menu.json",
+        url: "https://gist.githubusercontent.com/skd09/8d8a685ffbdae387ebe041f28384c13c/raw/26e97cec1e18243e3d88c90d78d2886535a4b3a6/menu.json",
         dataType: "json",
         success: loadFeatures,
         error: function (request, error)
         {
             console.log("Error loading data:", error);
-            // alert("Unable to fetch data ", error);
         }
     });
 
@@ -78,11 +77,12 @@ function loadFeatures(data)
 
     var randomPositions = [];
 
+    // load 3 random menu items (except hot beverages)
     while (randomPositions.length < featuresQty)
     {
         var random = Math.floor(Math.random() * menuList.length);
 
-        if (!randomPositions.some(elem => elem === random))
+        if ((menuList[random].Category != "Hot Beverage") && !randomPositions.some(elem => elem === random))
         {
             randomPositions.push(random);
         }
