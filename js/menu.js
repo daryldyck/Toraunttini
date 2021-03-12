@@ -7,56 +7,111 @@ $.ajax(
         type: "GET",
         url: "https://gist.githubusercontent.com/skd09/8d8a685ffbdae387ebe041f28384c13c/raw/26e97cec1e18243e3d88c90d78d2886535a4b3a6/menu.json",
         dataType: "json",
-        success: loadFeatures,
+        success: loadMenu,
         error: function (request, error)
         {
             console.log("Error loading data:", error);
         }
     });
 
-function loadFeatures(data)
+function loadMenu(data)
 {
     const menuList = data;
 
-    console.log(data);
+    console.log(menuList);
 
-    var randomPositions = [];
+    var categories = []
 
-    // load 3 random menu items (except hot beverages)
-    while (randomPositions.length < featuresQty)
-    {
-        var random = Math.floor(Math.random() * menuList.length);
+    // for (i = 0; i < menuList.length; i++) {
+    //   if(!categories.includes(menuList[i].Category)) {
+    //       categories.push(menuList[i].Category);
+    //   }
+    //
+    //   if(menuList.some(item => item.Category === 'Indian')) {
+    //     console.log("Indian food found!");
+    //   }
+    // }
 
-        if ((menuList[random].Category != "Hot Beverage") && !randomPositions.some(elem => elem === random))
-        {
-            randomPositions.push(random);
-        }
+    menuList.sort(function(a, b) {
+      if(a.Category < b.Category) {
+        return -1;
+      }
+      if(a.Category > b.Category) {
+        return 1;
+      }
+      return 0;
+    });
+
+    console.log(menuList);
+
+    console.log(categories);
+
+    for (i = 0; i < menuList.length; i++) {
+      if(!categories.includes(menuList[i].Category)) {
+        console.log("New Category : " + menuList[i].Category);
+        categories.push(menuList[i].Category);
+
+        $("#menuDisplay").append('<div class="row category-title-container">' +
+          '<h2 class="category-title">' + menuList[i].Category +'</h2>' +
+          '<hr class="category-title-decor">' +
+          '</div>');
+
+        $('#menuDisplay').append('<div class="row" id="'+ menuList[i].Category.replace(/\s/g, '') + 'Items"></div>');
+
+      }
+
+      addFeature(menuList[i]);
     }
 
-    for (i = 0; i < 3; i++)
-    {
-        addFeature(menuList[randomPositions[i]]);
-    }
+    //Inefficient adding
+    // for (i = 0; i < 5; i++)
+    // {
+    //   addFeature(menuList[i]);
+    // }
+    //
+    // for (i = 3; i < 6; i++) {
+    //   addFeature(menuList[i]);
+    // }
+    //
+    // for (i = 6; i < 9; i++) {
+    //   addFeature(menuList[i]);
+    // }
+    //
+    // for (i = 9; i < 12; i++) {
+    //   addFeature(menuList[i]);
+    // }
+    //
+    // for (i = 12; i < 15; i++) {
+    //   addFeature(menuList[i]);
+    // }
+    //
+    // for (i = 15; i < 18; i++) {
+    //   addFeature(menuList[i]);
+    // }
+    //
+    // for (i = 18; i < 21; i++) {
+    //   addFeature(menuList[i]);
+    // }
+    //
+    // for (i = 21; i < 24; i++) {
+    //   addFeature(menuList[i]);
+    // }
+    //
+    // for (i = 24; i < 27; i++) {
+    //   addFeature(menuList[i]);
+    // }
+    //
+    // for (i = 27; i < 30; i++) {
+    //   addFeature(menuList[i]);
+    // }
 
-    for (i = 3; i < 6; i++) {
-      addFeature(menuList[randomPositions[i]]);
-    }
-
-    for (i = 6; i < 9; i++) {
-      addFeature(menuList[randomPositions[i]]);
-    }
-
-    for (i = 9; i < 12; i++) {
-      addFeature(menuList[randomPositions[i]]);
-    }
-
-    //addFeature(menuList[randomPositions[9]])
 }
 
 
 function addFeature(dish)
 {
-    $("#featuresItems").append('<div class="menu-item-col" id="featureCol' + dish.Id + '"></div>');
+    const categoryItemTag = "#" + dish.Category.replace(/\s/g, '') + "Items";
+    $(categoryItemTag).append('<div class="menu-item-col" id="featureCol' + dish.Id + '"></div>');
     $("#featureCol" + dish.Id).append('<a href="meal.html?mealId=' + dish.Id +
     '"><div class="menu-item" id="featureItem' +
     dish.Id + '"></div></a>');
