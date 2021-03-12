@@ -56,13 +56,13 @@ function setActiveRadio()
 }
 
 // ------------------ LOAD MENU FOR FEATURE ------------------ //
-const menuURL = "https://gist.githubusercontent.com/skd09/8d8a685ffbdae387ebe041f28384c13c/raw/26e97cec1e18243e3d88c90d78d2886535a4b3a6/menu.json"
+const menuURL = "https://gist.githubusercontent.com/skd09/8d8a685ffbdae387ebe041f28384c13c/ra/26e97cec1e18243e3d88c90d78d2886535a4b3a6/menu.json"
 var featuresQty = 3;
 
 $.ajax(
     {
         type: "GET",
-        url: menuURL,
+        url: "https://gist.githubusercontent.com/skd09/8d8a685ffbdae387ebe041f28384c13c/raw/26e97cec1e18243e3d88c90d78d2886535a4b3a6/menu.json",
         dataType: "json",
         success: loadFeatures,
         error: function (request, error)
@@ -74,6 +74,7 @@ $.ajax(
 function loadFeatures(data)
 {
     const menuList = data;
+
     var randomPositions = [];
 
     // load 3 random menu items (except hot beverages)
@@ -97,8 +98,7 @@ function loadFeatures(data)
 function addFeature(dish)
 {
     $("#featuresItems").append('<div class="feature-col" id="featureCol' + dish.Id + '"></div>');
-    $("#featureCol" + dish.Id).append('<a href="meal.html?mealId=' + dish.Id +
-        '"><div class="feature-item" id="featureItem' + dish.Id + '"></div></a>');
+    $("#featureCol" + dish.Id).append('<div class="feature-item" id="featureItem' + dish.Id + '"></div>');
 
     $("#featureItem" + dish.Id).append('<img src="' + dish.Image + '" class="feature-img">');
     $("#featureItem" + dish.Id).append('<h3 class="feature-title">' + dish.Title + '</h3>');
