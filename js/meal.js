@@ -1,29 +1,30 @@
 var mealId;
 
-console.log("LOADED : " + location.search);
+$(document).on("pagebeforeshow", "#mainContainer", function() {
+  const url = location.search;
+  console.log(url);
 
-const url = location.search;
-console.log(url);
+  mealId = url.substring(url.indexOf("=") + 1);
+  console.log("Meal ID: " + mealId);
 
-var mealId = url.substring(url.indexOf("=") + 1);
-console.log("Meal ID: " + mealId);
+  const menuURL = "https://gist.githubusercontent.com/skd09/8d8a685ffbdae387ebe041f28384c13c/ra/26e97cec1e18243e3d88c90d78d2886535a4b3a6/menu.json"
 
-const menuURL = "https://gist.githubusercontent.com/skd09/8d8a685ffbdae387ebe041f28384c13c/ra/26e97cec1e18243e3d88c90d78d2886535a4b3a6/menu.json"
+  $.ajax({
+    type: "GET",
+    url: "https://gist.githubusercontent.com/skd09/8d8a685ffbdae387ebe041f28384c13c/raw/26e97cec1e18243e3d88c90d78d2886535a4b3a6/menu.json",
+    dataType: "json",
+    success: loadMeal,
+    error: function (request, error) {
+      console.log("Error loading meal data", error);
+    }
+  });
 
-$.ajax({
-  type: "GET",
-  url: "https://gist.githubusercontent.com/skd09/8d8a685ffbdae387ebe041f28384c13c/raw/26e97cec1e18243e3d88c90d78d2886535a4b3a6/menu.json",
-  dataType: "json",
-  success: loadMeal,
-  error: function (request, error) {
-    console.log("Error loading meal data", error);
-  }
 });
 
 function loadMeal(data) {
   const menuData = data;
   const meal = menuData[mealId-1]
-  console.log("Menu Data : " + meal.Category);
+  console.log("Menu Data : " + meal.Title);
 
   $("#mealName").append(meal.Title)
 
@@ -35,8 +36,6 @@ function loadMeal(data) {
 
 
   $('#mealDescription').append('<button class="btn" id="addButton" type="button" class="btn btn-primary">Add to cart</button>');
-
-
 
   // $('#addButton').click(function(){
   //   console.log("Adding to favourites");
