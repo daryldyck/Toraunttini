@@ -689,6 +689,131 @@ form a {
     margin-right: 20px;
 }
 
+/* --------------- MENU --------------- */
+.menu {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.menu-container {
+    width: 80%;
+    height: auto;
+    position: relative;
+    text-align: center;
+    padding: 20px 0;
+    margin: auto;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.query-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.query-label {
+    padding: 0 20px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: black;
+}
+
+.search-button {
+  padding: 0 20px;
+  margin: 0 20px;
+}
+
+/* --------------- MENU ITEM--------------- */
+
+.menu-item {
+    width: 90%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.menu-item-col {
+    flex-basis: 30%;
+    margin-bottom: 40px;
+}
+
+.menu-item {
+    justify-items: center;
+    position: relative;
+    text-align: center;
+    padding: 15px 10px;
+    box-shadow: 0 -0.5px 3px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11), 0 4px 4px rgba(0, 0, 0, 0.11), 0 8px 8px rgba(0, 0, 0, 0.11), 0 16px 16px rgba(0, 0, 0, 0.11);
+    cursor: pointer;
+    transition: 0.5s;
+    margin: 0;
+}
+
+.menu .menu-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 -0.5px 3px rgba(0, 0, 0, 0.20), 0 2px 2px rgba(0, 0, 0, 0.20), 0 4px 4px rgba(0, 0, 0, 0.20);
+}
+
+.menu-item-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    padding-bottom: 20px;
+}
+
+.menu-item .menu-item-title {
+    font-size: 18px;
+    color: #000;
+}
+
+.menu-item .menu-item-price {
+    font-size: 18px;
+    color: #ff00d4;
+}
+
+.menu-item .ratings {
+    margin: 20px 0;
+}
+
+.menu-item-divider {
+    margin: 20px 0px;
+    width: 100%;
+    height: 2px;
+    background: black;
+    border: 0;
+}
+
+.menu-item .menu-item-desc {
+  color: grey;
+  max-height: 50px;
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*-- Meal --*/
+.meal-image {
+  width: 45%;
+
+}
+
+.meal-item-col {
+    flex-basis: 40%;
+    margin-bottom: 40px;
+}
+
+.meal-item-price {
+  text-align: center;
+    font-size: 18px;
+    color: #ff00d4;
+}
+
+.meal-item-desc {
+  color: grey;
+}
+
 /* --------------- RESPONSIVE SCREEN ADJSUTMENTS--------------- */
 
 @media screen and (max-width: 750px) {
