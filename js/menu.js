@@ -38,16 +38,19 @@ function loadFeatures(data)
         addFeature(menuList[randomPositions[i]]);
     }
 
-    for (i = 3; i < 6; i++) {
-      addFeature(menuList[randomPositions[i]]);
+    for (i = 3; i < 6; i++)
+    {
+        addFeature(menuList[randomPositions[i]]);
     }
 
-    for (i = 6; i < 9; i++) {
-      addFeature(menuList[randomPositions[i]]);
+    for (i = 6; i < 9; i++)
+    {
+        addFeature(menuList[randomPositions[i]]);
     }
 
-    for (i = 9; i < 12; i++) {
-      addFeature(menuList[randomPositions[i]]);
+    for (i = 9; i < 12; i++)
+    {
+        addFeature(menuList[randomPositions[i]]);
     }
 
     //addFeature(menuList[randomPositions[9]])
@@ -58,13 +61,13 @@ function addFeature(dish)
 {
     $("#featuresItems").append('<div class="menu-item-col" id="featureCol' + dish.Id + '"></div>');
     $("#featureCol" + dish.Id).append('<a href="meal.html?mealId=' + dish.Id +
-    '"><div class="menu-item" id="featureItem' +
-    dish.Id + '"></div></a>');
+        '"><div class="menu-item" id="featureItem' +
+        dish.Id + '"></div></a>');
 
     $("#featureItem" + dish.Id).append('<img src="' + dish.Image + '" class="menu-item-img">');
     $("#featureItem" + dish.Id).append('<h3 class="menu-item-title">' + dish.Title + '</h3>');
     $("#featureItem" + dish.Id).append('<p class="menu-item-price">$' + dish.Price + '</p>');
-    $("#featureItem" + dish.Id).append('<p class="menu-item-desc">'+dish.Description+'</p>');
+    $("#featureItem" + dish.Id).append('<p class="menu-item-desc">' + dish.Description + '</p>');
     $("#featureItem" + dish.Id).append('<hr class="menu-item-divider">');
 
     addRatings(dish);
@@ -72,8 +75,9 @@ function addFeature(dish)
 
     $("#featureItem" + dish.Id).append('<button class="btn" id="addButton" type="button">Add to cart</button>');
 
-    $("#addButton").click(function(){
-      alert("Added to cart");
+    $("#addButton").click(function ()
+    {
+        alert("Added to cart");
     });
 }
 
