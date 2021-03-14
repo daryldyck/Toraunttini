@@ -16,7 +16,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 
-    <script text="text/javascript" src="js/cart.js" defer="true"></script>
+    <script text="text/javascript" src="js/history.js" defer="true"></script>
 
   </head>
 
@@ -69,95 +69,32 @@
 
         <div class="title-container">
           <hr class="title-decor">
-          <h2 id="mealName" class="title">Cart</h2>
+          <h2 id="mealName" class="title">Purchase History</h2>
           <hr class="title-decor">
         </div>
 
         <div class="row">
           <div id="mealInfoContainer" class="cart-container">
             <!-- --------------- Cart Box--------------- -->
-
             <div class="row">
-              <div>
-                <div id="cartListContainer" class="box cart-list-container">
-                  <div class="row">
-                    <div class="cart-col-first">
-                      <h2 class="cart-item-title">Item</h2>
-                    </div>
-                    <div class="cart-col-second">
-                      <h2 class="cart-item-title">Name</h2>
-                    </div>
-                    <div class="cart-col-third">
-                      <h2 class="cart-item-title">Amount</h2>
-                    </div>
-                    <div class="cart-col-fourth">
-                      <h2 class="cart-item-title">Price</h2>
-                    </div>
-                    <div class="cart-col-fourth">
-                    </div>
+              <div id="historyListContainer" class="box history-list-container">
+                <div id="historyRow" class="row">
+                  <div class="history-col-first">
+                    <h2 class="cart-item-title">Date-Time</h2>
                   </div>
-                  <hr class="cart-divider">
-                  <!-- Add cart items after this line -->
-                </div>
-
-                <div class="row total-row">
-                  <div class="cart-col-first">
-                    <h2 class="cart-item-title"></h2>
+                  <div id="historyItems" class="history-col-second">
+                    <h2 class="cart-item-title">Items</h2>
                   </div>
-                  <div class="cart-col-second">
-                    <h2 class="cart-item-title"></h2>
+                  <div class="history-col-third">
+                    <h2 style="width:160px;padding:0;" class="cart-item-title">Card Number</h2>
                   </div>
-                  <div class="cart-col-third">
-                    <h2 class="cart-item-title">Total:</h2>
-                  </div>
-                  <div class="cart-col-fourth">
-                    <h2 id="cartTotalCost" class="cart-item-title">Total</h2>
-                  </div>
-                  <div class="cart-col-fourth">
+                  <div class="history-col-fourth">
+                    <h2 class="cart-item-title">Total</h2>
                   </div>
                 </div>
+                <hr class="cart-divider">
+                <!-- Add cart items after this line -->
               </div>
-
-
-              <div class="box cart-info-container">
-                <div class="login-form-btn">
-                  <span>Information</span>
-                </div>
-
-                <div class="">
-                  <form id="cartForm" onsubmit="return confirmOrder()" name="registerInfo">
-                    <div>
-                      <div style="display: flex;">
-                        <input type="text" name="firstName" placeholder=" First Name" required>
-                        <span style="width: 10px;"></span>
-                        <input type="text" name="lastName" placeholder=" Last Name" required>
-                      </div>
-
-                      <input type="email" name="email" placeholder=" Email" required>
-
-
-                      <input type="tel" name="phone" placeholder=" Phone" minlength="10" required>
-                      <input type="text" name="address" placeholder=" Address" minlength="2" required>
-
-                      <div class="login-form-btn">
-                        <span>Payment Information</span>
-                      </div>
-
-                      <input type="text" name="cardNumber" placeholder=" Card Number" required>
-                      <div style="display: flex;">
-                        <input type="number" name="expiryDate" placeholder=" Expire Date - MMYY" id="expiryDate" required>
-                        <span style="width: 10px;"></span>
-                        <input type="number" name="cvv" placeholder=" CVV" id="cvv" required>
-                      </div>
-
-                      <button id="confirmBtn" type="submit" class="inactive-btn" disabled=true>Confirm Order</button>
-                    </div>
-                  </form>
-                </div>
-
-                <p id="confirmStatus" style="color: #ff00d4;"></p>
-              </div>
-
             </div>
 
 

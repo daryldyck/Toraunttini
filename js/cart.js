@@ -11,13 +11,43 @@ class Receipt {
     this.expiryDate = 0;
     this.cvv = 0;
     this.date = "";
+    this.time = "";
     this.cart = [];
+    this.totalCost = 0;
   }
 }
 
+var userList = [];
+var userInfo = "";
+
+// Get current user info
+if ("toraunttini_userList" in localStorage) {
+  userList = JSON.parse(localStorage.getItem("toraunttini_userList"));
+}
+
+if ("toraunttini_currentUser" in localStorage) {
+  var currentUserName = localStorage.getItem("toraunttini_currentUser");
+  login(currentUserName);
+}
+
+function login(currentUserName) {
+  console.log("login: " + currentUserName);
+  localStorage.setItem("toraunttini_currentUser", currentUserName);
+  userInfo = userList.find(elem => elem.username === currentUserName);
+
+  document.getElementById("nav-login").innerHTML = "Account";
+  document.getElementById("nav-login").href = "account.html";
+
+  document.forms["cartForm"]["firstName"].value = userInfo.firstName;
+  document.forms["cartForm"]["lastName"].value = userInfo.lastName;
+  document.forms["cartForm"]["email"].value = userInfo.email;
+  document.forms["cartForm"]["phone"].value = userInfo.phone;
+  document.forms["cartForm"]["address"].value = userInfo.address;
+}
+
+// Set up
 var menu;
 var total = 0;
-
 addCartQuantity();
 
 $.ajax({
@@ -34,23 +64,29 @@ function loadMenu(data) {
 
   menu = data;
 
-  console.log("DATA : " + menu);
-
-  getCartItems();
+  getCartItems(menu);
 }
 
-function getCartItems() {
+function getCartItems(menuList) {
   var cart = [];
+  console.log("DATA : " + menuList);
   if ("cart" in localStorage) {
     cart = JSON.parse(localStorage.getItem("cart"));
     console.log("Cart : " + cart);
+
+    //If there is a cart enable purchase button
+    $("#confirmBtn").removeClass("inactive-btn");
+    $("#confirmBtn").addClass("btn");
+    $("#confirmBtn").attr("disabled", false);
 
     for (i = 0; i < cart.length; i++) {
       $("#cartListContainer").append('<div id="cartRow' + i + '" class="row"></div>');
 
       //get item image
-      var itemId = cart[i].itemId;
-      $("#cartRow" + i).append('<div class="cart-col-first">' + '<div class="cart-img" style="background-image: url(' + menu[itemId].Image + ');"></div>');
+      var itemId = cart[i].itemId - 1;
+      console.log("ID : " + itemId);
+      console.log("Image name : " + menuList[itemId].Image);
+      $("#cartRow" + i).append('<div class="cart-col-first">' + '<div class="cart-img" style="background-image: url(' + menuList[itemId].Image + ');"></div>');
       $("#cartRow" + i).append('<div class="cart-col-second"><h2 class="cart-item-title">' + cart[i].itemName + '</h2><p id="priceOfItem' + i + '">$' + cart[i].itemPrice + '</p></div>');
       $("#cartRow" + i).append('<div class="cart-col-third"><div class="adj"><h2 class="cart-item-title qty-h1">Qty:</h2><input id="itemQty' + i + '" class="cart-qty-inp" type="text" name="item-qty-' + i + '" value="' + cart[i].quantity + '"></div></div>');
       console.log("Curr Quantity : " + $("#itemQty" + i).val());
@@ -145,6 +181,7 @@ function confirmOrder() {
   var dd = String(today.getDate()).padStart(2, '0');
   var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
   var yyyy = today.getFullYear();
+  var time = today.toLocaleTimeString();
   today = mm + '/' + dd + '/' + yyyy;
 
   const newReceipt = new Receipt();
@@ -157,6 +194,8 @@ function confirmOrder() {
   newReceipt.expiryDate = expiryDate;
   newReceipt.cvv = cvv;
   newReceipt.date = today;
+  newReceipt.time = time;
+  newReceipt.totalCost = parseInt($("#cartTotalCost").text().substring(1));
 
   newReceipt.cart = JSON.parse(localStorage.getItem("cart"));
 
@@ -165,10 +204,12 @@ function confirmOrder() {
     if ("purchases" in localStorage) {
       var purchases = JSON.parse(localStorage.getItem("purchases"));
       purchases.push(newReceipt);
+      addToPurchases(newReceipt);
       localStorage.setItem("purchases", JSON.stringify(purchases));
     } else {
       var purchases = []
       purchases.push(newReceipt);
+      addToPurchases(newReceipt);
       localStorage.setItem("purchases", JSON.stringify(purchases));
       console.log("Generate Receipt");
     }
@@ -176,7 +217,7 @@ function confirmOrder() {
     $("#confirmBtn").attr("disabled", true);
     $("#confirmBtn").removeClass("btn");
     $("#confirmBtn").addClass("inactive-btn");
-    $("#confirmStatus").text("Confirmed Order - " + today);
+    $("#confirmStatus").text("Confirmed Order - " + today + " " + time);
 
     //Empty cart
     localStorage.removeItem("cart");
@@ -186,4 +227,20 @@ function confirmOrder() {
   }
 
   return false;
+}
+
+function addToPurchases(receipt) {
+  if ("toraunttini_currentUser" in localStorage || "toraunttini_userList" in localStorage) {
+    var users = JSON.parse(localStorage.getItem("toraunttini_userList"));
+    var userName = localStorage.getItem("toraunttini_currentUser");
+    var user = userList.find(elem => elem.username === userName);
+    var idx = userList.indexOf(user);
+    user.purchases.push(receipt);
+
+    //update user info in userList
+    users[idx] = user;
+    //update localStorage
+    localStorage.setItem("toraunttini_userList", JSON.stringify(users));
+  }
+
 }
