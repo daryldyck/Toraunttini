@@ -77,6 +77,7 @@ function getCartItems() {
           var idx = i.target.name.substring(6);
           var qty = $("#itemQty" + idx).val();
           updateCart(idx, qty);
+          addCartQuantity();
           $(this).removeClass("btn");
           $(this).addClass("inactive-btn");
           $(this).attr("disabled", true);
