@@ -11,6 +11,10 @@ if ("toraunttini_currentUser" in localStorage)
     var currentUserName = localStorage.getItem("toraunttini_currentUser");
     currentUser = userList.find(elem => elem.username === currentUserName);
 }
+else
+{
+    window.location.href = "./index.html";
+}
 
 loadAccountDeatils();
 
