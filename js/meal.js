@@ -1,5 +1,14 @@
 var mealId;
 
+class CartItem {
+  constructor() {
+    this.itemId = 0;
+    this.itemName = "";
+    this.itemPrice = 0;
+    this.quantity = 0;
+  }
+}
+
 console.log("LOADED : " + location.search);
 
 const url = location.search;
@@ -15,15 +24,17 @@ $.ajax({
   url: "https://gist.githubusercontent.com/skd09/8d8a685ffbdae387ebe041f28384c13c/raw/26e97cec1e18243e3d88c90d78d2886535a4b3a6/menu.json",
   dataType: "json",
   success: loadMeal,
-  error: function (request, error) {
+  error: function(request, error) {
     console.log("Error loading meal data", error);
   }
 });
 
 function loadMeal(data) {
   const menuData = data;
-  const meal = menuData[mealId-1]
+  const meal = menuData[mealId - 1]
   console.log("Menu Data : " + meal.Category);
+
+  addCartQuantity();
 
   $("#mealName").append(meal.Title)
 
@@ -31,49 +42,97 @@ function loadMeal(data) {
   $('#mealDisplay').append('<div id="mealDescription" class="meal-item-col"><p class="meal-item-price">$' + meal.Price + '</p></div>');
   addRatings(meal);
   $('#mealDescription').append('<p class="meal-item-desc">' + meal.Description + '</p>');
-  $('#mealDescription').append('<input type="text" name="quantity" placeholder="0"><br>');
-
+  $('#mealDescription').append('<input id="itemQuantity" type="number" name="quantity" placeholder="0"><br>');
 
   $('#mealDescription').append('<button class="btn" id="addButton" type="button" class="btn btn-primary">Add to cart</button>');
 
-
-
-  // $('#addButton').click(function(){
-  //   console.log("Adding to favourites");
-  //   myFavs.addCountryToFavourites(country);
-  //   console.log(myFavs.countryList);
-  // });
+  $("#addButton").click(function() {
+    if ($("#itemQuantity").val() > 0) {
+      const confirmAdd = confirm("Add item to cart?");
+      if (confirmAdd) {
+        addToCart(meal, $("#itemQuantity").val());
+      }
+    } else {
+      alert("Please input valid quantity to add.");
+    }
+  });
 
 }
 
-function addRatings(dish)
-{
-    $("#mealDescription").append('<div class="ratings" id="ratings' + dish.Id + '"></div>');
+function addToCart(item, quantity) {
+  var cart = [];
 
-    var fullRating = 5;
+  if ("cart" in localStorage) {
+    cart = JSON.parse(localStorage.getItem("cart"));
+    console.log(cart);
+  }
 
-    var fullStars = Math.trunc(dish.Ratings);
-    var halfStars = Math.round(dish.Ratings) - fullStars;
-    var emptyStars = fullRating - fullStars - halfStars;
-
-    // full stars
-    while (fullStars > 0)
-    {
-        $("#ratings" + dish.Id).append('<i class="fa fa-star"></i>'); // 1
-        fullStars--;
+  var idx = -1;
+  for (i = 0; i < cart.length; i++) {
+    console.log(cart[i]);
+    if (cart[i].itemId === item.Id) {
+      idx = i;
     }
+  }
 
-    // half stars
-    while (halfStars > 0)
-    {
-        $("#ratings" + dish.Id).append('<i class="fa fa-star-half-o"></i>'); // 0.5
-        halfStars--;
-    }
+  if (idx != -1) {
+    cart[idx].quantity += parseInt(quantity);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    addCartQuantity();
+  } else {
+    const cartItem = new CartItem();
+    cartItem.itemId = item.Id;
+    cartItem.itemName = item.Title;
+    cartItem.itemPrice = item.Price;
+    cartItem.quantity = parseInt(quantity);
+    cart.push(cartItem);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    addCartQuantity();
+  }
+}
 
-    // empty stars
-    while (emptyStars > 0)
-    {
-        $("#ratings" + dish.Id).append('<i class="fa fa-star-o"></i>'); // 0
-        emptyStars--;
+function addCartQuantity() {
+  var qty = 0;
+  if ("cart" in localStorage) {
+    const cart = JSON.parse(localStorage.getItem("cart"));
+    console.log(cart);
+    for (var i = 0; i < cart.length; i++) {
+      console.log("adding " + cart[i].quantity);
+      qty += cart[i].quantity;
     }
+  }
+  console.log(qty);
+  if (qty > 0) {
+    $("#navCartQty").text(qty);
+  } else if (qty <= 0) {
+    $("#navCartQty").text("");
+  }
+}
+
+function addRatings(dish) {
+  $("#mealDescription").append('<div class="ratings" id="ratings' + dish.Id + '"></div>');
+
+  var fullRating = 5;
+
+  var fullStars = Math.trunc(dish.Ratings);
+  var halfStars = Math.round(dish.Ratings) - fullStars;
+  var emptyStars = fullRating - fullStars - halfStars;
+
+  // full stars
+  while (fullStars > 0) {
+    $("#ratings" + dish.Id).append('<i class="fa fa-star"></i>'); // 1
+    fullStars--;
+  }
+
+  // half stars
+  while (halfStars > 0) {
+    $("#ratings" + dish.Id).append('<i class="fa fa-star-half-o"></i>'); // 0.5
+    halfStars--;
+  }
+
+  // empty stars
+  while (emptyStars > 0) {
+    $("#ratings" + dish.Id).append('<i class="fa fa-star-o"></i>'); // 0
+    emptyStars--;
+  }
 }
