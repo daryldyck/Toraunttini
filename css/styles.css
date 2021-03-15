@@ -427,7 +427,9 @@ nav .icon-burger .line {
     margin-bottom: 20px;
 }
 
-.footer-col-1, .footer-col-2, .footer-col-3 {
+.footer-col-1,
+.footer-col-2,
+.footer-col-3 {
     min-width: 250px;
     max-width: 300px;
     margin-bottom: 20px;
@@ -658,7 +660,7 @@ form a {
 
 .account-container {
     width: 300px;
-    height: 370px;
+    height: fit-content;
     position: relative;
     text-align: center;
     padding: 20px 0;
@@ -727,8 +729,8 @@ form a {
 }
 
 .search-button {
-  padding: 0 20px;
-  margin: 0 20px;
+    padding: 0 20px;
+    margin: 0 20px;
 }
 
 .category-title-container {
@@ -813,16 +815,16 @@ form a {
 }
 
 .menu-item .menu-item-desc {
-  color: grey;
-  max-height: 50px;
-  max-width: 250px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    color: grey;
+    max-height: 50px;
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /*-- Meal --*/
 .meal-image {
-  width: 45%;
+    width: 45%;
 
 }
 
@@ -832,13 +834,13 @@ form a {
 }
 
 .meal-item-price {
-  text-align: center;
+    text-align: center;
     font-size: 18px;
     color: #ff00d4;
 }
 
 .meal-item-desc {
-  color: grey;
+    color: grey;
 }
 
 /* --------------- CART--------------- */
@@ -891,41 +893,41 @@ form a {
 }
 
 .cart-item-title {
-  font-size: 18px;
-  color: #000;
+    font-size: 18px;
+    color: #000;
 }
 
 .cart-img {
-  width: 100%;
-  height: 50px;
-  background-size: 100% 100%;
+    width: 100%;
+    height: 50px;
+    background-size: 100% 100%;
 }
 
 .cart-item-subtext {
-  color: grey;
+    color: grey;
 }
 
 .cart-col-first {
-  text-align: center;
-  flex-basis: 15%;
-  /* margin: 20px 20px; */
+    text-align: center;
+    flex-basis: 15%;
+    /* margin: 20px 20px; */
 }
 
 .cart-col-second {
-  width: 200px;
-  text-align: center;
-  flex-basis: auto;
-  /* margin: 20px 20px; */
+    width: 200px;
+    text-align: center;
+    flex-basis: auto;
+    /* margin: 20px 20px; */
 }
 
 .cart-col-second h2 {
-  padding: 1px;
-  overflow:hidden;
-  text-overflow: ellipsis;
+    padding: 1px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .cart-col-second p {
-  color: grey;
+    color: grey;
 
 }
 
@@ -950,21 +952,21 @@ form a {
 }
 
 .cart-qty-inp {
-  width: 30%;
-  height: 30px;
-  font-size: 18px;
+    width: 30%;
+    height: 30px;
+    font-size: 18px;
 }
 
 .adj {
-  width: 80px;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: space-around;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .qty-h1 {
-  padding: 0;
+    padding: 0;
 }
 
 .inactive-btn {
@@ -982,7 +984,7 @@ form a {
 }
 
 .update-btn {
-  padding: 0 10px;
+    padding: 0 10px;
 }
 
 #cartForm {
@@ -1001,7 +1003,7 @@ form .inactive-btn {
 }
 
 .total-row {
-  margin-top: 30px;
+    margin-top: 30px;
 }
 
 /* --------------- HISTORY--------------- */
@@ -1017,27 +1019,27 @@ form .inactive-btn {
 }
 
 .history-col-first {
-  text-align: center;
-  flex-basis: 20%;
-  /* margin: 20px 20px; */
+    text-align: center;
+    flex-basis: 20%;
+    /* margin: 20px 20px; */
 }
 
 .history-col-second {
-  width: 200px;
-  text-align: left;
-  flex-basis: auto;
-  /* margin: 20px 20px; */
+    width: 200px;
+    text-align: left;
+    flex-basis: auto;
+    /* margin: 20px 20px; */
 }
 
 .history-col-second h2 {
-  padding: 1px;
-  overflow:hidden;
-  text-overflow: ellipsis;
+    padding: 1px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .history-col-second p {
-  color: grey;
-  font-size: 14px;
+    color: grey;
+    font-size: 14px;
 }
 
 .history-col-third {
@@ -1048,7 +1050,7 @@ form .inactive-btn {
 }
 
 .history-col-third h2 {
-  padding: 0;
+    padding: 0;
 }
 
 .history-col-fourth {
@@ -1058,7 +1060,7 @@ form .inactive-btn {
 }
 
 .history-col-fourth h2 {
-  width: 100px;
+    width: 100px;
 }
 
 /* --------------- RESPONSIVE SCREEN ADJSUTMENTS--------------- */
@@ -1067,17 +1069,23 @@ form .inactive-btn {
     .col-2 {
         flex-basis: 100%;
     }
+
     .about h2 {
         font-size: 24px;
     }
-    .footer-col-1, .footer-col-2, .footer-col-3 {
+
+    .footer-col-1,
+    .footer-col-2,
+    .footer-col-3 {
         flex-basis: 100%;
     }
+
     .navBar-logo {
         float: none;
         width: 175px;
         justify-content: center;
     }
+
     nav .menu {
         float: none;
         position: fixed;
@@ -1094,30 +1102,37 @@ form .inactive-btn {
         box-sizing: border-box;
         transition: all 0.5s ease-in-out;
     }
+
     .navBar .menu a {
         font-size: 20px;
     }
+
     nav .icon-burger {
         display: block;
     }
+
     nav :checked~.menu {
         bottom: 0;
     }
+
     nav .icon-burger {
         display: block;
     }
+
     nav :checked~.icon-burger .line:nth-child(1) {
         transform: translateY(9px) rotate(225deg);
     }
+
     nav :checked~.icon-burger .line:nth-child(3) {
         transform: translateY(-9px) rotate(-225deg);
     }
+
     nav :checked~.icon-burger .line:nth-child(2) {
         opacity: 0;
     }
 
     .cart-list-container {
-      width: 100%;
+        width: 100%;
     }
 }
 
