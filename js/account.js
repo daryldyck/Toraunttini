@@ -98,3 +98,8 @@ function validatePassword()
 
 password.onchange = validatePassword;
 confirmPassword.onkeyup = validatePassword;
+
+function history()
+{
+    window.location.href = "./history.html";
+}
