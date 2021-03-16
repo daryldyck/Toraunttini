@@ -1,331 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="favicon.ico" />
-    <title>Toraunttini Restuarant & Martini Bar</title>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="favicon.ico" />
+  <title>Toraunttini Restuarant & Martini Bar</title>
 
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
-
-    <script text="text/javascript" src="js/cart.js" defer="true"></script>
-
-  </head>
-
-  <body>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 
-    <!-- --------------- NAV MENU--------------- -->
-    <div class="navBar navBar2">
-      <div class="navBar-container">
+  <script text="text/javascript" src="js/auth.js" defer="true"></script>
+  <script text="text/javascript" src="js/cart.js" defer="true"></script>
 
-        <div class="navBar-logo">
-          <a href="index.html"><img src="images/logo.svg">
-            <h3>Restuarant & Martini Bar</h3>
-          </a>
-        </div>
+</head>
 
-        <nav>
+<body>
 
-          <input id="nav-toggle" type="checkbox">
 
-          <ul class="menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="login.html" id="nav-login">Login</a></li>
-          </ul>
+  <!-- --------------- NAV MENU--------------- -->
+  <div class="navBar navBar2">
+    <div class="navBar-container">
 
-          <label for="nav-toggle" class="icon-burger" onclick="lockScroll()">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-          </label>
-
-        </nav>
-
-        <a href="cart.html">
-          <img src="images/cart.svg" class="navBar-cart-img">
-          <span id="navCartQty"></span>
+      <div class="navBar-logo">
+        <a href="index.html"><img src="images/logo.svg">
+          <h3>Restuarant & Martini Bar</h3>
         </a>
-
       </div>
+
+      <nav>
+
+        <input id="nav-toggle" type="checkbox">
+
+        <ul class="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="login.html" id="nav-login">Login</a></li>
+        </ul>
+
+        <label for="nav-toggle" class="icon-burger" onclick="lockScroll()">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </label>
+
+      </nav>
+
+      <a href="cart.html">
+        <img src="images/cart.svg" class="navBar-cart-img">
+        <span id="navCartQty"></span>
+      </a>
+
     </div>
+  </div>
 
 
 
-    <!-- --------------- MEAL--------------- -->
-    <div class="menu">
-      <div class="container">
+  <!-- --------------- MEAL--------------- -->
+  <div class="menu">
+    <div class="container">
 
-        <div class="title-container">
-          <hr class="title-decor">
-          <h2 id="mealName" class="title">Cart</h2>
-          <hr class="title-decor">
-        </div>
+      <div class="title-container">
+        <hr class="title-decor">
+        <h2 id="mealName" class="title">Cart</h2>
+        <hr class="title-decor">
+      </div>
 
-        <div class="row">
-          <div id="mealInfoContainer" class="cart-container">
-            <!-- --------------- Cart Box--------------- -->
+      <div class="row">
+        <div id="mealInfoContainer" class="cart-container">
+          <!-- --------------- Cart Box--------------- -->
 
-            <div class="row">
-              <div>
-                <div id="cartListContainer" class="box cart-list-container">
-                  <div class="row">
-                    <div class="cart-col-first">
-                      <h2 class="cart-item-title">Item</h2>
-                    </div>
-                    <div class="cart-col-second">
-                      <h2 class="cart-item-title">Name</h2>
-                    </div>
-                    <div class="cart-col-third">
-                      <h2 class="cart-item-title">Amount</h2>
-                    </div>
-                    <div class="cart-col-fourth">
-                      <h2 class="cart-item-title">Price</h2>
-                    </div>
-                    <div class="cart-col-fourth">
-                    </div>
-                  </div>
-                  <hr class="cart-divider">
-                  <!-- Add cart items after this line -->
-                </div>
-
-                <!-- Row for cart cost -->
-                <div class="row total-row">
+          <div class="row">
+            <div>
+              <div id="cartListContainer" class="box cart-list-container">
+                <div class="row">
                   <div class="cart-col-first">
-                    <h2 class="cart-item-title"></h2>
+                    <h2 class="cart-item-title">Item</h2>
                   </div>
-                  <div class="cart-col-second" style="width: auto;">
-                    <h2 class="cart-item-title"></h2>
+                  <div class="cart-col-second">
+                    <h2 class="cart-item-title">Name</h2>
                   </div>
-                  <div class="cart-col-third" style="width: 50px;">
-                    <h2 class="cart-item-subtitle">Price:</h2>
+                  <div class="cart-col-third">
+                    <h2 class="cart-item-title">Amount</h2>
                   </div>
                   <div class="cart-col-fourth">
-                    <h4 id="cartPriceCost" class="cart-item-subtitle">$0</h4>
+                    <h2 class="cart-item-title">Price</h2>
                   </div>
                   <div class="cart-col-fourth">
                   </div>
                 </div>
+                <hr class="cart-divider">
+                <!-- Add cart items after this line -->
+              </div>
 
-                <!-- Row for discount -->
-                <div class="row total-row">
-                  <div class="cart-col-first">
-                    <h2 class="cart-item-title"></h2>
-                  </div>
-                  <div class="cart-col-second" style="width: auto;">
-                    <h2 class="cart-item-title"></h2>
-                  </div>
-                  <div class="cart-col-third" style="width: 50px;">
-                    <h2 class="cart-item-subtitle">Promo:</h2>
-                  </div>
-                  <div class="cart-col-fourth">
-                    <h4 id="cartDiscountCost" class="cart-item-subtitle">$0</h4>
-                  </div>
-                  <div class="cart-col-fourth">
-                  </div>
+              <!-- Row for cart cost -->
+              <div class="row total-row">
+                <div class="cart-col-first">
+                  <h2 class="cart-item-title"></h2>
                 </div>
-
-                <!-- Row for tax -->
-                <div class="row total-row">
-                  <div class="cart-col-first">
-                    <h2 class="cart-item-title"></h2>
-                  </div>
-                  <div class="cart-col-second" style="width: auto;">
-                    <h2 class="cart-item-title"></h2>
-                  </div>
-                  <div class="cart-col-third" style="width: 50px;">
-                    <h2 class="cart-item-subtitle">Tax(13%):</h2>
-                  </div>
-                  <div class="cart-col-fourth">
-                    <h4 id="cartTaxCost" class="cart-item-subtitle">$0</h4>
-                  </div>
-                  <div class="cart-col-fourth">
-                  </div>
+                <div class="cart-col-second" style="width: auto;">
+                  <h2 class="cart-item-title"></h2>
                 </div>
-
-                <!-- Row for total -->
-                <div class="row total-row">
-                  <div class="cart-col-first">
-                    <h2 class="cart-item-title"></h2>
-                  </div>
-                  <div class="cart-col-second" style="width: auto;">
-                    <h2 class="cart-item-title"></h2>
-                  </div>
-                  <div class="cart-col-third" style="width: 50px;">
-                    <h2 class="cart-item-title">Total:</h2>
-                  </div>
-                  <div class="cart-col-fourth">
-                    <h4 id="cartTotalCost" class="cart-item-title">$0</h4>
-                  </div>
-                  <div class="cart-col-fourth">
-                  </div>
+                <div class="cart-col-third" style="width: 50px;">
+                  <h2 class="cart-item-subtitle">Price:</h2>
+                </div>
+                <div class="cart-col-fourth">
+                  <h4 id="cartPriceCost" class="cart-item-subtitle">$0</h4>
+                </div>
+                <div class="cart-col-fourth">
                 </div>
               </div>
 
-
-              <div class="box cart-info-container">
-                <div id="infoHeader" class="login-form-btn">
-                  <span>Information</span>
+              <!-- Row for discount -->
+              <div class="row total-row">
+                <div class="cart-col-first">
+                  <h2 class="cart-item-title"></h2>
                 </div>
-                <p id="confirmStatus" style="color: #ff00d4;"></p>
+                <div class="cart-col-second" style="width: auto;">
+                  <h2 class="cart-item-title"></h2>
+                </div>
+                <div class="cart-col-third" style="width: 50px;">
+                  <h2 class="cart-item-subtitle">Promo:</h2>
+                </div>
+                <div class="cart-col-fourth">
+                  <h4 id="cartDiscountCost" class="cart-item-subtitle">$0</h4>
+                </div>
+                <div class="cart-col-fourth">
+                </div>
+              </div>
 
-                <div class="">
-                  <form id="cartForm" onsubmit="return confirmOrder()" name="registerInfo">
-                    <div>
-                      <div style="display: flex;">
-                        <input type="text" name="firstName" placeholder=" First Name" required>
-                        <span style="width: 10px;"></span>
-                        <input type="text" name="lastName" placeholder=" Last Name" required>
-                      </div>
+              <!-- Row for tax -->
+              <div class="row total-row">
+                <div class="cart-col-first">
+                  <h2 class="cart-item-title"></h2>
+                </div>
+                <div class="cart-col-second" style="width: auto;">
+                  <h2 class="cart-item-title"></h2>
+                </div>
+                <div class="cart-col-third" style="width: 50px;">
+                  <h2 class="cart-item-subtitle">Tax(13%):</h2>
+                </div>
+                <div class="cart-col-fourth">
+                  <h4 id="cartTaxCost" class="cart-item-subtitle">$0</h4>
+                </div>
+                <div class="cart-col-fourth">
+                </div>
+              </div>
 
-                      <input type="email" name="email" placeholder=" Email" required>
+              <!-- Row for total -->
+              <div class="row total-row">
+                <div class="cart-col-first">
+                  <h2 class="cart-item-title"></h2>
+                </div>
+                <div class="cart-col-second" style="width: auto;">
+                  <h2 class="cart-item-title"></h2>
+                </div>
+                <div class="cart-col-third" style="width: 50px;">
+                  <h2 class="cart-item-title">Total:</h2>
+                </div>
+                <div class="cart-col-fourth">
+                  <h4 id="cartTotalCost" class="cart-item-title">$0</h4>
+                </div>
+                <div class="cart-col-fourth">
+                </div>
+              </div>
+            </div>
 
 
-                      <input type="tel" name="phone" placeholder=" Phone" minlength="10" required>
-                      <input type="text" name="address" placeholder=" Address" minlength="2" required>
+            <div class="box cart-info-container">
+              <div id="infoHeader" class="login-form-btn">
+                <span>Information</span>
+              </div>
+              <p id="confirmStatus" style="color: #ff00d4;"></p>
 
-                      <div class="login-form-btn">
-                        <span>Payment Information</span>
-                      </div>
-
-                      <input type="number" name="cardNumber" placeholder=" Card Number" minlength="16" autocomplete="off" required>
-                      <div style="display: flex;">
-                        <!--<input type="number" name="expiryDate" placeholder=" Expire Date - MMYY" id="expiryDate" required>-->
-                        <div class="row" style="flex-basis: 75%;">
-                          <select id="monthList" class="month-list" name="monthList" style="flex-basis: 50%;">
-                            <option value="" active>MM</option>
-                            <option value="01" active>Jan-01</option>
-                            <option value="02">Feb-02</option>
-                            <option value="03">Mar-03</option>
-                            <option value="04">Apr-04</option>
-                            <option value="05">May-05</option>
-                            <option value="06">Jun-06</option>
-                            <option value="07">Jul-07</option>
-                            <option value="08">Aug-08</option>
-                            <option value="09">Sep-09</option>
-                            <option value="10">Oct-10</option>
-                            <option value="11">Nov-11</option>
-                            <option value="12">Dec-12</option>
-                          </select>
-
-                          <select id="yearList" class="year-list" name="yearList" style="flex-basis: 50%;">
-                            <option value="">YYYY</option>
-                          </select>
-                        </div>
-                        <span style="width: 10px;"></span>
-                        <input type="number" name="cvv" placeholder=" CVV" id="cvv" required style="flex-basis: 25%;">
-                      </div>
-                    </div>
-
-                    <!-- Coupon -->
-                    <div class="login-form-btn">
-                      <span>Coupon/Promo</span>
-                    </div>
+              <div class="">
+                <form id="cartForm" onsubmit="return confirmOrder()" name="registerInfo">
+                  <div>
                     <div style="display: flex;">
-                      <div class="row" style="flex-basis: 100%;">
-                        <input type="text" name="couponCode" placeholder="Code" id="couponCode" style="flex-basis: 50%;">
-                        <button id="couponBtn" class="inactive-btn coupon-btn" disabled=true style="flex-basis: 40%">Apply coupon</button>
-                      </div>
+                      <input type="text" name="firstName" placeholder=" First Name" required>
+                      <span style="width: 10px;"></span>
+                      <input type="text" name="lastName" placeholder=" Last Name" required>
                     </div>
 
-                    <button id="confirmBtn" type="submit" class="inactive-btn" disabled=true style="flex-basis: 25%; margin-top: 20px;">Confirm Order</button>
-                </div>
-                </form>
-                <form id="cartConfirmForm" style="width: 300px;" class="">
-                  <div class="row">
-                    <h2>ORDER CONFIRMED</h2>
+                    <input type="email" name="email" placeholder=" Email" required>
+
+
+                    <input type="tel" name="phone" placeholder=" Phone" minlength="10" required>
+                    <input type="text" name="address" placeholder=" Address" minlength="2" required>
+
+                    <div class="login-form-btn">
+                      <span>Payment Information</span>
+                    </div>
+
+                    <input type="number" name="cardNumber" placeholder=" Card Number" minlength="16" autocomplete="off"
+                      required>
+                    <div style="display: flex;">
+                      <!--<input type="number" name="expiryDate" placeholder=" Expire Date - MMYY" id="expiryDate" required>-->
+                      <div class="row" style="flex-basis: 75%;">
+                        <select id="monthList" class="month-list" name="monthList" style="flex-basis: 50%;">
+                          <option value="" active>MM</option>
+                          <option value="01" active>Jan-01</option>
+                          <option value="02">Feb-02</option>
+                          <option value="03">Mar-03</option>
+                          <option value="04">Apr-04</option>
+                          <option value="05">May-05</option>
+                          <option value="06">Jun-06</option>
+                          <option value="07">Jul-07</option>
+                          <option value="08">Aug-08</option>
+                          <option value="09">Sep-09</option>
+                          <option value="10">Oct-10</option>
+                          <option value="11">Nov-11</option>
+                          <option value="12">Dec-12</option>
+                        </select>
+
+                        <select id="yearList" class="year-list" name="yearList" style="flex-basis: 50%;">
+                          <option value="">YYYY</option>
+                        </select>
+                      </div>
+                      <span style="width: 10px;"></span>
+                      <input type="number" name="cvv" placeholder=" CVV" id="cvv" required style="flex-basis: 25%;">
+                    </div>
                   </div>
-                  <div class="row">
-                    <hr class="title-decor">
+
+                  <!-- Coupon -->
+                  <div class="login-form-btn">
+                    <span>Coupon/Promo</span>
                   </div>
-                  <div class="row">
-                    <h4 id="receiptName"></h4>
+                  <div style="display: flex;">
+                    <div class="row" style="flex-basis: 100%;">
+                      <input type="text" name="couponCode" placeholder="Code" id="couponCode" style="flex-basis: 50%;">
+                      <button id="couponBtn" class="inactive-btn coupon-btn" disabled=true style="flex-basis: 40%">Apply
+                        coupon</button>
+                    </div>
                   </div>
-                  <div class="row" style="margin-top: 15px;">
-                    <p id="receiptAddr" style="color: black;"></p>
-                  </div>
-                  <div class="row" style="margin-top: 15px;">
-                    <p id="receiptPhone" style="color: black;"></p>
-                  </div>
-                  <div class="row" style="margin-top: 15px;">
-                    <p id="receiptDate" style="color: black;"></p>
-                  </div>
-                  <div class="row" style="margin-top: 15px;">
-                    <p id="receiptTime" style="color: black;"></p>
-                  </div>
-                  <div class="row">
-                    <hr class="title-decor">
-                  </div>
-                  <div class="row">
-                    <p id="receiptTotal" class="menu-item-price" style="font-size: 20px; color: #ff00d4;"></p>
-                  </div>
-                  <div class="row" style="margin-top: 15px;">
-                    <p id="receiptEmail" style="color: grey;"></p>
-                  </div>
-                </form>
+
+                  <button id="confirmBtn" type="submit" class="inactive-btn" disabled=true
+                    style="flex-basis: 25%; margin-top: 20px;">Confirm Order</button>
               </div>
-
+              </form>
+              <form id="cartConfirmForm" style="width: 300px;" class="">
+                <div class="row">
+                  <h2>ORDER CONFIRMED</h2>
+                </div>
+                <div class="row">
+                  <hr class="title-decor">
+                </div>
+                <div class="row">
+                  <h4 id="receiptName"></h4>
+                </div>
+                <div class="row" style="margin-top: 15px;">
+                  <p id="receiptAddr" style="color: black;"></p>
+                </div>
+                <div class="row" style="margin-top: 15px;">
+                  <p id="receiptPhone" style="color: black;"></p>
+                </div>
+                <div class="row" style="margin-top: 15px;">
+                  <p id="receiptDate" style="color: black;"></p>
+                </div>
+                <div class="row" style="margin-top: 15px;">
+                  <p id="receiptTime" style="color: black;"></p>
+                </div>
+                <div class="row">
+                  <hr class="title-decor">
+                </div>
+                <div class="row">
+                  <p id="receiptTotal" class="menu-item-price" style="font-size: 20px; color: #ff00d4;"></p>
+                </div>
+                <div class="row" style="margin-top: 15px;">
+                  <p id="receiptEmail" style="color: grey;"></p>
+                </div>
+              </form>
             </div>
 
-
           </div>
+
+
         </div>
       </div>
     </div>
+  </div>
 
 
 
-    <!-- --------------- FOOTER--------------- -->
-    <div class="footer">
-      <div class="container">
-        <div class="row">
+  <!-- --------------- FOOTER--------------- -->
+  <div class="footer">
+    <div class="container">
+      <div class="row">
 
-          <div class="footer-col-1">
-            <div class="footer-title">
-              <img src="images/logo.svg">
-              <h5>Restuarant & Martini Bar</h5>
-            </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse recusandae officia veritatis veniam
-              error inventore nobis consequuntur!</p>
+        <div class="footer-col-1">
+          <div class="footer-title">
+            <img src="images/logo.svg">
+            <h5>Restuarant & Martini Bar</h5>
           </div>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse recusandae officia veritatis veniam
+            error inventore nobis consequuntur!</p>
+        </div>
 
-          <div class="footer-col-2">
-            <h3>Download Our App</h3>
-            <p>Download App for Android or iOS</p>
-            <div class="app-logo">
-              <img src="images/play-store.png">
-              <img src="images/app-store.png">
-            </div>
-          </div>
-
-          <div class="footer-col-3">
-            <h3>Follow Us</h3>
-            <ul>
-              <li><a href="">Facebook</a></li>
-              <li><a href="">Twitter</a></li>
-              <li><a href="">Instagram</a></li>
-              <li><a href="">YouTube</a></li>
-            </ul>
+        <div class="footer-col-2">
+          <h3>Download Our App</h3>
+          <p>Download App for Android or iOS</p>
+          <div class="app-logo">
+            <img src="images/play-store.png">
+            <img src="images/app-store.png">
           </div>
         </div>
 
-        <hr>
-        <p class="copyright">&copy; Copyright 2021</p>
+        <div class="footer-col-3">
+          <h3>Follow Us</h3>
+          <ul>
+            <li><a href="">Facebook</a></li>
+            <li><a href="">Twitter</a></li>
+            <li><a href="">Instagram</a></li>
+            <li><a href="">YouTube</a></li>
+          </ul>
+        </div>
       </div>
+
+      <hr>
+      <p class="copyright">&copy; Copyright 2021</p>
     </div>
+  </div>
 
 
-  </body>
+</body>
 
 </html>
