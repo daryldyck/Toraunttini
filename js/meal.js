@@ -1,7 +1,9 @@
 var mealId;
 
-class CartItem {
-  constructor() {
+class CartItem
+{
+  constructor()
+  {
     this.itemId = 0;
     this.itemName = "";
     this.itemPrice = 0;
@@ -24,12 +26,14 @@ $.ajax({
   url: "https://gist.githubusercontent.com/skd09/8d8a685ffbdae387ebe041f28384c13c/raw/26e97cec1e18243e3d88c90d78d2886535a4b3a6/menu.json",
   dataType: "json",
   success: loadMeal,
-  error: function(request, error) {
+  error: function (request, error)
+  {
     console.log("Error loading meal data", error);
   }
 });
 
-function loadMeal(data) {
+function loadMeal(data)
+{
   const menuData = data;
   const meal = menuData[mealId - 1]
   console.log("Menu Data : " + meal.Category);
@@ -46,46 +50,57 @@ function loadMeal(data) {
 
   $('#mealDescription').append('<button class="btn" id="addButton" type="button" class="btn" style="width: 100%;">Add to cart</button>');
   //If meal not Available
-  if (meal.Available == 0) {
+  if (meal.Available == 0)
+  {
     $("#addButton").removeClass("btn");
     $("#addButton").addClass("inactive-btn");
     $("#addButton").attr("disabled", true);
   }
 
-  $("#addButton").click(function() {
-    if ($("#itemQuantity").val() > 0) {
+  $("#addButton").click(function ()
+  {
+    if ($("#itemQuantity").val() > 0)
+    {
       const confirmAdd = confirm("Add item to cart?");
-      if (confirmAdd) {
+      if (confirmAdd)
+      {
         addToCart(meal, $("#itemQuantity").val());
       }
-    } else {
+    } else
+    {
       alert("Please input valid quantity to add.");
     }
   });
 
 }
 
-function addToCart(item, quantity) {
+function addToCart(item, quantity)
+{
   var cart = [];
 
-  if ("cart" in localStorage) {
+  if ("cart" in localStorage)
+  {
     cart = JSON.parse(localStorage.getItem("cart"));
     console.log(cart);
   }
 
   var idx = -1;
-  for (i = 0; i < cart.length; i++) {
+  for (i = 0; i < cart.length; i++)
+  {
     console.log(cart[i]);
-    if (cart[i].itemId === item.Id) {
+    if (cart[i].itemId === item.Id)
+    {
       idx = i;
     }
   }
 
-  if (idx != -1) {
+  if (idx != -1)
+  {
     cart[idx].quantity += parseInt(quantity);
     localStorage.setItem("cart", JSON.stringify(cart));
     addCartQuantity();
-  } else {
+  } else
+  {
     const cartItem = new CartItem();
     cartItem.itemId = item.Id;
     cartItem.itemName = item.Title;
@@ -97,25 +112,8 @@ function addToCart(item, quantity) {
   }
 }
 
-function addCartQuantity() {
-  var qty = 0;
-  if ("cart" in localStorage) {
-    const cart = JSON.parse(localStorage.getItem("cart"));
-    console.log(cart);
-    for (var i = 0; i < cart.length; i++) {
-      console.log("adding " + cart[i].quantity);
-      qty += cart[i].quantity;
-    }
-  }
-  console.log(qty);
-  if (qty > 0) {
-    $("#navCartQty").text(qty);
-  } else if (qty <= 0) {
-    $("#navCartQty").text("");
-  }
-}
-
-function addRatings(dish) {
+function addRatings(dish)
+{
   $("#mealDescription").append('<div class="ratings meal-ratings" id="ratings' + dish.Id + '"></div>');
 
   var fullRating = 5;
@@ -125,19 +123,22 @@ function addRatings(dish) {
   var emptyStars = fullRating - fullStars - halfStars;
 
   // full stars
-  while (fullStars > 0) {
+  while (fullStars > 0)
+  {
     $("#ratings" + dish.Id).append('<i class="fa fa-star"></i>'); // 1
     fullStars--;
   }
 
   // half stars
-  while (halfStars > 0) {
+  while (halfStars > 0)
+  {
     $("#ratings" + dish.Id).append('<i class="fa fa-star-half-o"></i>'); // 0.5
     halfStars--;
   }
 
   // empty stars
-  while (emptyStars > 0) {
+  while (emptyStars > 0)
+  {
     $("#ratings" + dish.Id).append('<i class="fa fa-star-o"></i>'); // 0
     emptyStars--;
   }

@@ -8,22 +8,26 @@ $.ajax({
   url: "https://gist.githubusercontent.com/skd09/8d8a685ffbdae387ebe041f28384c13c/raw/26e97cec1e18243e3d88c90d78d2886535a4b3a6/menu.json",
   dataType: "json",
   success: loadMenu,
-  error: function(request, error) {
+  error: function (request, error)
+  {
     console.log("Error loading data:", error);
   }
 });
 
 // Get current user info
-if ("toraunttini_userList" in localStorage) {
+if ("toraunttini_userList" in localStorage)
+{
   userList = JSON.parse(localStorage.getItem("toraunttini_userList"));
 }
 
-if ("toraunttini_currentUser" in localStorage) {
+if ("toraunttini_currentUser" in localStorage)
+{
   var currentUserName = localStorage.getItem("toraunttini_currentUser");
   login(currentUserName);
 }
 
-function login(currentUserName) {
+function login(currentUserName)
+{
   console.log("login: " + currentUserName);
   localStorage.setItem("toraunttini_currentUser", currentUserName);
   currentUser = userList.find(elem => elem.username === currentUserName);
@@ -32,14 +36,17 @@ function login(currentUserName) {
   document.getElementById("nav-login").href = "account.html";
 }
 
-function loadMenu(data) {
+function loadMenu(data)
+{
   menuByCategory(data);
 
   //Set up search functions
   var sort = "";
-  $("#sortList").change(function() {
+  $("#sortList").change(function ()
+  {
     var str = "";
-    $("#sortList option:selected").each(function() {
+    $("#sortList option:selected").each(function ()
+    {
       str += $(this).val();
     });
     sort = str;
@@ -47,14 +54,18 @@ function loadMenu(data) {
 
   //Set up button click
   var newData = [];
-  $("#searchBtn").click(function() {
+  $("#searchBtn").click(function ()
+  {
 
-    if ($("#searchTextBox").val() != "") {
+    if ($("#searchTextBox").val() != "")
+    {
       console.log("Search for : " + $("#searchTextBox").val());
       var searchText = $("#searchTextBox").val().toLowerCase();
-      for (i = 0; i < data.length; i++) {
+      for (i = 0; i < data.length; i++)
+      {
         var pos = data[i].Title.toLowerCase().search(searchText);
-        if (pos > -1) {
+        if (pos > -1)
+        {
           console.log("Found Food");
           newData.push(data[i]);
         };
@@ -62,47 +73,59 @@ function loadMenu(data) {
     }
 
     console.log("New data : " + newData);
-    if (newData.length != 0) {
+    if (newData.length != 0)
+    {
       displayMenu(newData, sort);
-    } else {
+    } else
+    {
       displayMenu(data, sort);
     }
     newData = [];
   });
 }
 
-function displayMenu(data, sort) {
-  if (sort == "Category") {
+function displayMenu(data, sort)
+{
+  if (sort == "Category")
+  {
     menuByCategory(data);
   }
-  if (sort == "Name(A-Z)") {
+  if (sort == "Name(A-Z)")
+  {
     console.log(sort);
     menuBySort(data, "name", "forward");
   }
-  if (sort == "Name(Z-A)") {
+  if (sort == "Name(Z-A)")
+  {
     console.log(sort);
     menuBySort(data, "name", "backward");
   }
-  if (sort == "Price(Asc.)") {
+  if (sort == "Price(Asc.)")
+  {
     console.log(sort);
     menuBySort(data, "price", "forward");
   }
-  if (sort == "Price(Des.)") {
+  if (sort == "Price(Des.)")
+  {
     console.log(sort);
     menuBySort(data, "price", "backward");
   }
-  if (sort == "Rating(Asc.)") {
+  if (sort == "Rating(Asc.)")
+  {
     menuBySort(data, "rating", "forward");
   }
-  if (sort == "Rating(Des.)") {
+  if (sort == "Rating(Des.)")
+  {
     menuBySort(data, "rating", "backward");
   }
-  if (sort == "Availability") {
+  if (sort == "Availability")
+  {
     menuBySort(data, "avail", "backward");
   }
 }
 
-function menuBySort(data, criteria, direction) {
+function menuBySort(data, criteria, direction)
+{
   //Empty first
   $("#menuDisplay").empty();
 
@@ -113,78 +136,109 @@ function menuBySort(data, criteria, direction) {
 
   var categories = []
 
-  if (criteria == "name") {
-    if (direction == "forward") {
-      menuList.sort(function(a, b) {
-        if (a.Title < b.Title) {
+  if (criteria == "name")
+  {
+    if (direction == "forward")
+    {
+      menuList.sort(function (a, b)
+      {
+        if (a.Title < b.Title)
+        {
           return -1;
         }
-        if (a.Title > b.Title) {
+        if (a.Title > b.Title)
+        {
           return 1;
         }
         return 0;
       });
-    } else if (direction == "backward") {
-      menuList.sort(function(a, b) {
-        if (a.Title > b.Title) {
+    } else if (direction == "backward")
+    {
+      menuList.sort(function (a, b)
+      {
+        if (a.Title > b.Title)
+        {
           return -1;
         }
-        if (a.Title < b.Title) {
-          return 1;
-        }
-        return 0;
-      });
-    }
-  } else if (criteria == "price") {
-    if (direction == "forward") {
-      menuList.sort(function(a, b) {
-        if (a.Price < b.Price) {
-          return -1;
-        }
-        if (a.Price > b.Price) {
-          return 1;
-        }
-        return 0;
-      });
-    } else if (direction == "backward") {
-      menuList.sort(function(a, b) {
-        if (a.Price > b.Price) {
-          return -1;
-        }
-        if (a.Price < b.Price) {
+        if (a.Title < b.Title)
+        {
           return 1;
         }
         return 0;
       });
     }
-  } else if (criteria == "rating") {
-    if (direction == "forward") {
-      menuList.sort(function(a, b) {
-        if (a.Ratings < b.Ratings) {
+  } else if (criteria == "price")
+  {
+    if (direction == "forward")
+    {
+      menuList.sort(function (a, b)
+      {
+        if (a.Price < b.Price)
+        {
           return -1;
         }
-        if (a.Ratings > b.Ratings) {
+        if (a.Price > b.Price)
+        {
           return 1;
         }
         return 0;
       });
-    } else if (direction == "backward") {
-      menuList.sort(function(a, b) {
-        if (a.Ratings > b.Ratings) {
+    } else if (direction == "backward")
+    {
+      menuList.sort(function (a, b)
+      {
+        if (a.Price > b.Price)
+        {
           return -1;
         }
-        if (a.Ratings < b.Ratings) {
+        if (a.Price < b.Price)
+        {
           return 1;
         }
         return 0;
       });
     }
-  } else if (criteria = "avail") {
-    menuList.sort(function(a, b) {
-      if (a.Available > b.Available) {
+  } else if (criteria == "rating")
+  {
+    if (direction == "forward")
+    {
+      menuList.sort(function (a, b)
+      {
+        if (a.Ratings < b.Ratings)
+        {
+          return -1;
+        }
+        if (a.Ratings > b.Ratings)
+        {
+          return 1;
+        }
+        return 0;
+      });
+    } else if (direction == "backward")
+    {
+      menuList.sort(function (a, b)
+      {
+        if (a.Ratings > b.Ratings)
+        {
+          return -1;
+        }
+        if (a.Ratings < b.Ratings)
+        {
+          return 1;
+        }
+        return 0;
+      });
+    }
+  } else if (criteria = "avail")
+  {
+    menuList.sort(function (a, b)
+    {
+      if (a.Available > b.Available)
+      {
         return -1;
       }
-      if (a.Available < b.Available) {
+      if (a.Available < b.Available)
+      {
         return 1;
       }
       return 0;
@@ -194,7 +248,8 @@ function menuBySort(data, criteria, direction) {
   console.log(menuList);
   console.log(categories);
 
-  for (i = 0; i < menuList.length; i++) {
+  for (i = 0; i < menuList.length; i++)
+  {
 
     console.log("New Category : " + menuList[i].Category);
     categories.push(menuList[i].Category);
@@ -211,7 +266,8 @@ function menuBySort(data, criteria, direction) {
 }
 
 // Load items from menu
-function menuByCategory(data) {
+function menuByCategory(data)
+{
   //Empty menu
   $("#menuDisplay").empty();
 
@@ -222,11 +278,14 @@ function menuByCategory(data) {
 
   var categories = []
 
-  menuList.sort(function(a, b) {
-    if (a.Category < b.Category) {
+  menuList.sort(function (a, b)
+  {
+    if (a.Category < b.Category)
+    {
       return -1;
     }
-    if (a.Category > b.Category) {
+    if (a.Category > b.Category)
+    {
       return 1;
     }
     return 0;
@@ -236,8 +295,10 @@ function menuByCategory(data) {
 
   console.log(categories);
 
-  for (i = 0; i < menuList.length; i++) {
-    if (!categories.includes(menuList[i].Category)) {
+  for (i = 0; i < menuList.length; i++)
+  {
+    if (!categories.includes(menuList[i].Category))
+    {
       console.log("New Category : " + menuList[i].Category);
       categories.push(menuList[i].Category);
 
@@ -258,7 +319,8 @@ function menuByCategory(data) {
 
 }
 
-function addFeatureByID(dish) {
+function addFeatureByID(dish)
+{
   const categoryItemTag = "#" + dish.Id + "Items";
   //Uncomment for cards
   //$(categoryItemTag).append('<div class="menu-item-col" id="featureCol' + dish.Id + '"></div>');
@@ -277,7 +339,8 @@ function addFeatureByID(dish) {
   // ----------------
 
   console.log("Dish is avail: " + dish.Available);
-  if (dish.Available == 0) {
+  if (dish.Available == 0)
+  {
     $("#addButton" + dish.Id).removeClass("btn");
     $("#addButton" + dish.Id).addClass("inactive-btn");
   }
@@ -294,12 +357,14 @@ function addFeatureByID(dish) {
 
   $("#featureItem" + dish.Id).append('<button class="btn" id="addButton" type="button">Add to cart</button>');
 
-  $("#addButton").click(function() {
+  $("#addButton").click(function ()
+  {
     console.log("AddToCart");
   });
 }
 
-function addFeature(dish) {
+function addFeature(dish)
+{
   const categoryItemTag = "#" + dish.Category.replace(/\s/g, '') + "Items";
   //Uncomment for cards
   //$(categoryItemTag).append('<div class="menu-item-col" id="featureCol' + dish.Id + '"></div>');
@@ -317,7 +382,8 @@ function addFeature(dish) {
   $("#menuItem" + dish.Id).append('<div class="cart-col-fourth"><button class="btn" id="addButton' + dish.Id + '" type="button">Add to cart</button></div>');
 
   console.log("Dish is avail: " + dish.Available);
-  if (dish.Available == 0) {
+  if (dish.Available == 0)
+  {
     $("#addButton" + dish.Id).removeClass("btn");
     $("#addButton" + dish.Id).addClass("inactive-btn");
   }
@@ -335,12 +401,14 @@ function addFeature(dish) {
 
   $("#featureItem" + dish.Id).append('<button class="btn" id="addButton" type="button">Add to cart</button>');
 
-  $("#addButton").click(function() {
+  $("#addButton").click(function ()
+  {
     console.log("AddToCart");
   });
 }
 
-function addRatings(dish) {
+function addRatings(dish)
+{
   $("#menuItem" + dish.Id).append('<div class="ratings" id="ratings' + dish.Id + '"></div>');
 
   var fullRating = 5;
@@ -350,38 +418,23 @@ function addRatings(dish) {
   var emptyStars = fullRating - fullStars - halfStars;
 
   // full stars
-  while (fullStars > 0) {
+  while (fullStars > 0)
+  {
     $("#ratings" + dish.Id).append('<i class="fa fa-star"></i>'); // 1
     fullStars--;
   }
 
   // half stars
-  while (halfStars > 0) {
+  while (halfStars > 0)
+  {
     $("#ratings" + dish.Id).append('<i class="fa fa-star-half-o"></i>'); // 0.5
     halfStars--;
   }
 
   // empty stars
-  while (emptyStars > 0) {
+  while (emptyStars > 0)
+  {
     $("#ratings" + dish.Id).append('<i class="fa fa-star-o"></i>'); // 0
     emptyStars--;
-  }
-}
-
-function addCartQuantity() {
-  var qty = 0;
-  if ("cart" in localStorage) {
-    const cart = JSON.parse(localStorage.getItem("cart"));
-    console.log(cart);
-    for (var i = 0; i < cart.length; i++) {
-      console.log("adding " + cart[i].quantity);
-      qty += cart[i].quantity;
-    }
-  }
-  console.log(qty);
-  if (qty > 0) {
-    $("#navCartQty").text(qty);
-  } else if (qty <= 0) {
-    $("#navCartQty").text("");
   }
 }
