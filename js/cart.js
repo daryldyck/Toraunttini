@@ -1,7 +1,16 @@
+// Web Development Fundamentals - MADS4007
+// Toraunttini Restuarant & Martini Bar
+
+// Group 7
+// Brian Domingo - 101330689
+// Daryl Dyck - 101338429 
+
 console.log("cart.js loaded");
 
-class Receipt {
-  constructor() {
+class Receipt
+{
+  constructor()
+  {
     this.firstName = "";
     this.lastName = "";
     this.email = "";
@@ -26,7 +35,8 @@ var receiptForm = document.getElementById("cartConfirmForm");
 var sts = document.getElementById("confirmStatus");
 var infohdr = document.getElementById("infoHeader");
 
-function moveToConfirmForm(receiptInfo) {
+function moveToConfirmForm(receiptInfo)
+{
   receiptForm.style.transform = "translateX(-300px)";
   cartForm.style.transform = "translateX(-300px)";
   confirmStatus.style.transform = "translateX(-300px)";
@@ -45,22 +55,26 @@ function moveToConfirmForm(receiptInfo) {
 //Set up years selector
 const date = new Date();
 const currYear = date.getFullYear();
-for (i = 0; i < 10; i++) {
+for (i = 0; i < 10; i++)
+{
   var addYear = currYear + i;
   $("#yearList").append('<option value="' + addYear + '">' + addYear + '</option>')
 }
 
 // Get current user info
-if ("toraunttini_userList" in localStorage) {
+if ("toraunttini_userList" in localStorage)
+{
   userList = JSON.parse(localStorage.getItem("toraunttini_userList"));
 }
 
-if ("toraunttini_currentUser" in localStorage) {
+if ("toraunttini_currentUser" in localStorage)
+{
   var currentUserName = localStorage.getItem("toraunttini_currentUser");
   login(currentUserName);
 }
 
-function login(currentUserName) {
+function login(currentUserName)
+{
   console.log("login: " + currentUserName);
   localStorage.setItem("toraunttini_currentUser", currentUserName);
   userInfo = userList.find(elem => elem.username === currentUserName);
@@ -86,35 +100,42 @@ $.ajax({
   url: "https://gist.githubusercontent.com/skd09/8d8a685ffbdae387ebe041f28384c13c/raw/26e97cec1e18243e3d88c90d78d2886535a4b3a6/menu.json",
   dataType: "json",
   success: loadMenu,
-  error: function(request, error) {
+  error: function (request, error)
+  {
     console.log("Error loading data:", error);
   }
 });
 
-function loadMenu(data) {
+function loadMenu(data)
+{
 
   menu = data;
 
   getCartItems(menu);
 
   //On coupon code changed
-  $("#couponCode").change(function() {
+  $("#couponCode").change(function ()
+  {
     console.log("CHANGE");
     $("#couponBtn").trigger("change");
   });
 
   //Set coupon btn functions
-  $("#couponBtn").change(function() {
+  $("#couponBtn").change(function ()
+  {
     $(this).removeClass("inactive-btn");
     $(this).addClass("btn");
     $(this).attr("disabled", false);
 
-    $(this).click(function() {
+    $(this).click(function ()
+    {
       const code = $("#couponCode").val();
 
-      if (code.includes("CODE")) {
+      if (code.includes("CODE"))
+      {
         discount = parseInt(code.substring(4, 6));
-      } else {
+      } else
+      {
         alert("Invalid coupon code.");
       }
 
@@ -126,7 +147,8 @@ function loadMenu(data) {
   });
 }
 
-function getCartItems(menuList) {
+function getCartItems(menuList)
+{
   var total = 0;
   var cart = [];
 
@@ -135,7 +157,8 @@ function getCartItems(menuList) {
   $("#cartListContainer").append('<div class="row"><div class="cart-col-first"><h2 class="cart-item-title">Item</h2></div><div class="cart-col-second"><h2 class="cart-item-title">Name</h2></div><div class="cart-col-third"><h2 class="cart-item-title">Amount</h2></div><div class="cart-col-fourth"><h2 class="cart-item-title">Price</h2></div><div class="cart-col-fourth"></div></div><hr class="cart-divider">');
 
   console.log("DATA : " + menuList);
-  if ("cart" in localStorage) {
+  if ("cart" in localStorage)
+  {
     cart = JSON.parse(localStorage.getItem("cart"));
     console.log("Cart : " + cart);
 
@@ -144,7 +167,8 @@ function getCartItems(menuList) {
     $("#confirmBtn").addClass("btn");
     $("#confirmBtn").attr("disabled", false);
 
-    for (i = 0; i < cart.length; i++) {
+    for (i = 0; i < cart.length; i++)
+    {
       $("#cartListContainer").append('<div id="cartRow' + i + '" class="row"></div>');
 
       //get item image
@@ -164,19 +188,22 @@ function getCartItems(menuList) {
       $("#cartRow" + i).append('<div class="cart-col-fourth"><button id="itemBtn' + i + '" class="inactive-btn update-btn" type="button" name="button' + i + '">Update Cart</button></div>');
       $("#cartListContainer").append('<hr class="cart-divider">');
 
-      $("#itemQty" + i).change(function(i) {
+      $("#itemQty" + i).change(function (i)
+      {
         var idx = parseInt(i.target.name.substring(9));
         $("#itemBtn" + idx).trigger("change");
       });
 
       //Set btn functions
-      $("#itemBtn" + i).change(function() {
+      $("#itemBtn" + i).change(function ()
+      {
         console.log("Change Btn");
         $(this).removeClass("inactive-btn");
         $(this).addClass("btn");
         $(this).attr("disabled", false);
 
-        $(this).click(function(i) {
+        $(this).click(function (i)
+        {
           var idx = i.target.name.substring(6);
           var qty = $("#itemQty" + idx).val();
           updateCart(idx, qty);
@@ -203,32 +230,39 @@ function getCartItems(menuList) {
   }
 }
 
-function updateCart(index, newQuantity) {
+function updateCart(index, newQuantity)
+{
   console.log("Updating");
 
   var cartBefore = JSON.parse(localStorage.getItem("cart"));
   console.log("qty : " + newQuantity);
   console.log(cartBefore[index]);
 
-  if (newQuantity < 0) {
+  if (newQuantity < 0)
+  {
     alert("Cannot update value");
     getCartItems(menu);
-  } else if (newQuantity == 0) {
+  } else if (newQuantity == 0)
+  {
     var removeItem = confirm("Do you want to remove item from cart?");
-    if (removeItem) {
+    if (removeItem)
+    {
       cartBefore.splice(index, 1);
       localStorage.setItem("cart", JSON.stringify(cartBefore));
     }
     getCartItems(menu);
-  } else if (newQuantity > 0) {
+  } else if (newQuantity > 0)
+  {
     var updateItem = confirm("Do you want to update cart?");
-    if (updateItem) {
+    if (updateItem)
+    {
       cartBefore[index].quantity = parseInt(newQuantity);
       localStorage.setItem("cart", JSON.stringify(cartBefore));
       $("#itemCumulative" + index).text("$" + cartBefore[index].itemPrice * newQuantity);
     }
     getCartItems(menu);
-  } else {
+  } else
+  {
     alert("Invalid input");
     getCartItems(menu);
   }
@@ -242,25 +276,8 @@ function updateCart(index, newQuantity) {
 
 }
 
-function addCartQuantity() {
-  var qty = 0;
-  if ("cart" in localStorage) {
-    const cart = JSON.parse(localStorage.getItem("cart"));
-    console.log(cart);
-    for (var i = 0; i < cart.length; i++) {
-      console.log("adding " + cart[i].quantity);
-      qty += cart[i].quantity;
-    }
-  }
-  console.log(qty);
-  if (qty > 0) {
-    $("#navCartQty").text(qty);
-  } else if (qty <= 0) {
-    $("#navCartQty").text("");
-  }
-}
-
-function confirmOrder() {
+function confirmOrder()
+{
   console.log("Confirmed order");
 
   var firstName = document.forms["cartForm"]["firstName"].value;
@@ -288,26 +305,32 @@ function confirmOrder() {
   newReceipt.phone = phone;
   newReceipt.address = address;
 
-  if (cardNumber.length != 16) {
+  if (cardNumber.length != 16)
+  {
     alert("Enter valid card number.");
     return false;
-  } else {
+  } else
+  {
     newReceipt.cardNumber = cardNumber;
   }
 
-  if (expiryMonth == "" || expiryYear == "") {
+  if (expiryMonth == "" || expiryYear == "")
+  {
     alert("Enter valid expire date.");
     return false;
-  } else {
+  } else
+  {
     console.log(expiryMonth);
     console.log(expiryYear);
     newReceipt.expiryDate = expiryMonth + "/" + expiryYear;
   }
 
-  if (cvv.length != 3) {
+  if (cvv.length != 3)
+  {
     alert("Enter valid security code.");
     return false;
-  } else {
+  } else
+  {
     newReceipt.cvv = cvv;
   }
 
@@ -319,13 +342,16 @@ function confirmOrder() {
   newReceipt.cart = JSON.parse(localStorage.getItem("cart"));
 
   var confirmation = confirm("Confirm order?");
-  if (confirmation == true) {
-    if ("purchases" in localStorage) {
+  if (confirmation == true)
+  {
+    if ("purchases" in localStorage)
+    {
       var purchases = JSON.parse(localStorage.getItem("purchases"));
       purchases.push(newReceipt);
       addToPurchases(newReceipt);
       localStorage.setItem("purchases", JSON.stringify(purchases));
-    } else {
+    } else
+    {
       var purchases = []
       purchases.push(newReceipt);
       addToPurchases(newReceipt);
@@ -343,15 +369,18 @@ function confirmOrder() {
     //Empty cart
     localStorage.removeItem("cart");
     addCartQuantity();
-  } else {
+  } else
+  {
     txt = "You pressed Cancel!";
   }
 
   return false;
 }
 
-function addToPurchases(receipt) {
-  if ("toraunttini_currentUser" in localStorage || "toraunttini_userList" in localStorage) {
+function addToPurchases(receipt)
+{
+  if ("toraunttini_currentUser" in localStorage || "toraunttini_userList" in localStorage)
+  {
     var users = JSON.parse(localStorage.getItem("toraunttini_userList"));
     var userName = localStorage.getItem("toraunttini_currentUser");
     var user = userList.find(elem => elem.username === userName);

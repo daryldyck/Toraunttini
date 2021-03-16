@@ -1,40 +1,28 @@
+// Web Development Fundamentals - MADS4007
+// Toraunttini Restuarant & Martini Bar
+
+// Group 7
+// Brian Domingo - 101330689
+// Daryl Dyck - 101338429 
+
 console.log("history.js");
 
 var userList = [];
 
-//Get cart quantity
-//Add cart quantity
-addCartQuantity();
-
-function addCartQuantity() {
-  var qty = 0;
-  if ("cart" in localStorage) {
-    const cart = JSON.parse(localStorage.getItem("cart"));
-    console.log(cart);
-    for (var i = 0; i < cart.length; i++) {
-      console.log("adding " + cart[i].quantity);
-      qty += cart[i].quantity;
-    }
-  }
-  console.log(qty);
-  if (qty > 0) {
-    $("#navCartQty").text(qty);
-  } else if (qty <= 0) {
-    $("#navCartQty").text("");
-  }
-}
-
 // Get current user info
-if ("toraunttini_userList" in localStorage) {
+if ("toraunttini_userList" in localStorage)
+{
   userList = JSON.parse(localStorage.getItem("toraunttini_userList"));
 }
 
-if ("toraunttini_currentUser" in localStorage) {
+if ("toraunttini_currentUser" in localStorage)
+{
   var currentUserName = localStorage.getItem("toraunttini_currentUser");
   login(currentUserName);
 }
 
-function login(currentUserName) {
+function login(currentUserName)
+{
   console.log("login: " + currentUserName);
   localStorage.setItem("toraunttini_currentUser", currentUserName);
   currentUser = userList.find(elem => elem.username === currentUserName);
@@ -46,10 +34,12 @@ function login(currentUserName) {
   document.getElementById("nav-login").href = "account.html";
 }
 
-function getHistory(user) {
+function getHistory(user)
+{
   console.log("Username : " + user.username);
 
-  for (i = 0; i < user.purchases.length; i++) {
+  for (i = 0; i < user.purchases.length; i++)
+  {
     var cartHistory = user.purchases[i];
     console.log(cartHistory.date);
 
@@ -61,7 +51,8 @@ function getHistory(user) {
     $("#historyRow" + i).append('<div class="history-col-fourth"><h2 id="historyTotal" class="cart-item-title">$' + cartHistory.totalCost + '</h2></div>');
     $("#historyListContainer").append('<hr class="cart-divider">');
 
-    for (j = 0; j < cartHistory.cart.length; j++) {
+    for (j = 0; j < cartHistory.cart.length; j++)
+    {
       $("#historyItems" + i).append('<p style = "color: grey;" >- ' + cartHistory.cart[j].itemName + " (x" + cartHistory.cart[j].quantity + ')</p>');
     }
   }

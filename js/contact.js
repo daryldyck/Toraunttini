@@ -1,4 +1,12 @@
-function initMap() {
+// Web Development Fundamentals - MADS4007
+// Toraunttini Restuarant & Martini Bar
+
+// Group 7
+// Brian Domingo - 101330689
+// Daryl Dyck - 101338429 
+
+function initMap()
+{
   // The location of Uluru
   const uluru = {
     lat: 43.649996,
@@ -10,26 +18,6 @@ function initMap() {
     center: uluru
   });
   // The marker, positioned at Uluru
-  const marker = new google.maps.Marker({position: uluru, map: map});
+  const marker = new google.maps.Marker({ position: uluru, map: map });
 }
 
-//Add cart quantity
-addCartQuantity();
-
-function addCartQuantity() {
-  var qty = 0;
-  if ("cart" in localStorage) {
-    const cart = JSON.parse(localStorage.getItem("cart"));
-    console.log(cart);
-    for (var i = 0; i < cart.length; i++) {
-      console.log("adding " + cart[i].quantity);
-      qty += cart[i].quantity;
-    }
-  }
-  console.log(qty);
-  if (qty > 0) {
-    $("#navCartQty").text(qty);
-  } else if (qty <= 0) {
-    $("#navCartQty").text("");
-  }
-}

@@ -330,6 +330,7 @@ nav .menu {
 #nav-toggle {
     position: absolute;
     top: -100px;
+    width: 10px;
 }
 
 nav .icon-burger {
@@ -588,7 +589,10 @@ nav .icon-burger .line {
     transition: transform 0.75s;
 }
 
-form input, form select, select , input{
+form input,
+form select,
+select,
+input {
     width: 100%;
     height: 30px;
     margin-top: 5px;
@@ -598,7 +602,10 @@ form input, form select, select , input{
     box-shadow: 0 -0.5px 3px rgba(0, 0, 0, 0.05), 0 2px 2px rgba(0, 0, 0, 0.05), 0 4px 4px rgba(0, 0, 0, 0.05);
 }
 
-form input:focus, form select:focus, select:focus , input:focus{
+form input:focus,
+form select:focus,
+select:focus,
+input:focus {
     border: none;
     outline: 1px solid #ff00d4;
     box-shadow: 0 -0.5px 3px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11);
@@ -655,7 +662,7 @@ form a {
 
 .account {
     width: 100%;
-    min-height: 80vh;
+    min-height: fit-content;
 }
 
 .account-container {
@@ -720,11 +727,11 @@ form a {
 }
 
 .query-container input {
-  width: auto;
+    width: auto;
 }
 
 .query-container select {
-  width: auto;
+    width: auto;
 }
 
 .query-label {
@@ -826,10 +833,10 @@ form a {
 }
 
 .menu-row-item-desc {
-  color: grey;
-  text-align: left;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    color: grey;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .menu-item .menu-item-price {
@@ -838,8 +845,8 @@ form a {
 }
 
 .menu-row-item-price {
-  font-size: 18px;
-  color: #ff00d4;
+    font-size: 18px;
+    color: #ff00d4;
 }
 
 .menu-item .ratings {
@@ -890,19 +897,19 @@ form a {
 }
 
 .meal-ratings {
-  padding: 10px 0;
+    padding: 10px 0;
 }
 
 #mealDescription input {
 
-  width: 75px;
-  text-align: center;
-  font-size: 18px;
-  margin-bottom: 20px;
+    width: 75px;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
 }
 
 #mealDescription .btn {
-  width: 80%;
+    width: 80%;
 }
 
 /* --------------- CART--------------- */
@@ -1023,7 +1030,7 @@ form a {
 }
 
 .bill-cost {
-  text-align: right;
+    text-align: right;
 }
 
 .cart-divider {
@@ -1067,7 +1074,7 @@ form a {
 }
 
 .coupon-btn {
-  margin-top: 0;
+    margin-top: 0;
 }
 
 .update-btn {
@@ -1090,7 +1097,7 @@ form .inactive-btn {
 }
 
 #cartForm #couponBtn {
-  margin-top: 0px;
+    margin-top: 0px;
 }
 
 #cartConfirmForm {
@@ -1169,11 +1176,11 @@ form .inactive-btn {
 
 /* MAP */
 #map {
-  margin: 20px;
-  height: 300px;
-  /* The height is 400 pixels */
-  width: 300px;
-  /* The width is the width of the web page */
+    margin: 20px;
+    height: 300px;
+    /* The height is 400 pixels */
+    width: 300px;
+    /* The width is the width of the web page */
 }
 
 /* --------------- RESPONSIVE SCREEN ADJSUTMENTS--------------- */
@@ -1249,15 +1256,15 @@ form .inactive-btn {
     }
 
     .meal-item-col {
-      flex-basis: 100%;
+        flex-basis: 100%;
     }
 
     .cart-info-container {
-      margin-top: 10px;
+        margin-top: 10px;
     }
 
     .total-row {
-      width: 90%;
+        width: 90%;
     }
 }
 
@@ -1271,7 +1278,7 @@ form .inactive-btn {
     }
 
     .total-row {
-      width: 90%;
+        width: 90%;
     }
 }
 

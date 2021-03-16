@@ -1,24 +1,34 @@
+// Web Development Fundamentals - MADS4007
+// Toraunttini Restuarant & Martini Bar
+
+// Group 7
+// Brian Domingo - 101330689
+// Daryl Dyck - 101338429 
+
 var userList = [];
 var currentUser;
 
-if ("toraunttini_userList" in localStorage) {
+if ("toraunttini_userList" in localStorage)
+{
   userList = JSON.parse(localStorage.getItem("toraunttini_userList"));
 }
 
-if ("toraunttini_currentUser" in localStorage) {
+if ("toraunttini_currentUser" in localStorage)
+{
   var currentUserName = localStorage.getItem("toraunttini_currentUser");
   currentUser = userList.find(elem => elem.username === currentUserName);
 }
 else
 {
-    window.location.href = "./index.html";
+  window.location.href = "./index.html";
 }
 
 loadAccountDeatils();
-addCartQuantity();
 
-function loadAccountDeatils() {
-  if (currentUser != null) {
+function loadAccountDeatils()
+{
+  if (currentUser != null)
+  {
     document.getElementById("username").innerHTML = currentUser.username;
     document.forms["accountInfo"]["email"].value = currentUser.email;
     document.forms["accountInfo"]["password"].value = currentUser.password;
@@ -30,7 +40,8 @@ function loadAccountDeatils() {
   }
 }
 
-function saveAccount() {
+function saveAccount()
+{
   console.log("saveAccount");
   var username = currentUser.username;
   var email = document.forms["accountInfo"]["email"].value;
@@ -47,14 +58,15 @@ function saveAccount() {
   currentUser.phone = phone;
   currentUser.address = address;
 
-  //userList.push(newUser);
   localStorage.setItem("toraunttini_userList", JSON.stringify(userList));
   alert("Your account has been saved.");
 }
 
-function deleteAccount() {
+function deleteAccount()
+{
   console.log("deleteAccount");
-  if (confirm("Are you sure you want to delete your account?")) {
+  if (confirm("Are you sure you want to delete your account?"))
+  {
     userList.splice(userList.indexOf(currentUser), 1);
     localStorage.setItem("toraunttini_userList", JSON.stringify(userList));
     localStorage.removeItem("toraunttini_currentUser");
@@ -65,39 +77,27 @@ function deleteAccount() {
 var password = document.getElementById("password");
 var confirmPassword = document.getElementById("confirmPassword");
 
-function validateUserName() {
+function validateUserName()
+{
   console.log("validateUserName");
 
-  if (userList.some(elem => elem.username === userName.value)) {
+  if (userList.some(elem => elem.username === userName.value))
+  {
     userName.setCustomValidity("Username already exists.");
-  } else {
+  } else
+  {
     userName.setCustomValidity('');
   }
 }
 
-function validatePassword() {
-  if (password.value != confirmPassword.value) {
+function validatePassword()
+{
+  if (password.value != confirmPassword.value)
+  {
     confirmPassword.setCustomValidity("Passwords Don't Match");
-  } else {
+  } else
+  {
     confirmPassword.setCustomValidity('');
-  }
-}
-
-function addCartQuantity() {
-  var qty = 0;
-  if ("cart" in localStorage) {
-    const cart = JSON.parse(localStorage.getItem("cart"));
-    console.log(cart);
-    for (var i = 0; i < cart.length; i++) {
-      console.log("adding " + cart[i].quantity);
-      qty += cart[i].quantity;
-    }
-  }
-  console.log(qty);
-  if (qty > 0) {
-    $("#navCartQty").text(qty);
-  } else if (qty <= 0) {
-    $("#navCartQty").text("");
   }
 }
 
@@ -106,5 +106,5 @@ confirmPassword.onkeyup = validatePassword;
 
 function history()
 {
-    window.location.href = "./history.html";
+  window.location.href = "./history.html";
 }
