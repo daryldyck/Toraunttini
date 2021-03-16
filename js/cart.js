@@ -20,6 +20,36 @@ class Receipt {
 var userList = [];
 var userInfo = "";
 
+//Set up sliding for confirmation
+var cartForm = document.getElementById("cartForm");
+var receiptForm = document.getElementById("cartConfirmForm");
+var sts = document.getElementById("confirmStatus");
+var infohdr = document.getElementById("infoHeader");
+
+function moveToConfirmForm(receiptInfo) {
+  receiptForm.style.transform = "translateX(-300px)";
+  cartForm.style.transform = "translateX(-300px)";
+  confirmStatus.style.transform = "translateX(-300px)";
+  infohdr.style.transform = "translateX(-300px)";
+
+  $("#receiptName").text(receiptInfo.firstName + " " + receiptInfo.lastName);
+  $("#receiptAddr").text(receiptInfo.address);
+  $("#receiptPhone").text(receiptInfo.phone);
+  $("#receiptDate").text(receiptInfo.date);
+  $("#receiptTime").text(receiptInfo.time);
+  $("#receiptTotal").text("$" + receiptInfo.totalCost);
+  $("#receiptEmail").text("Confirmation has been sent to " + receiptInfo.email + ".");
+
+}
+
+//Set up years selector
+const date = new Date();
+const currYear = date.getFullYear();
+for (i = 0; i < 10; i++) {
+  var addYear = currYear + i;
+  $("#yearList").append('<option value="' + addYear + '">' + addYear + '</option>')
+}
+
 // Get current user info
 if ("toraunttini_userList" in localStorage) {
   userList = JSON.parse(localStorage.getItem("toraunttini_userList"));
@@ -47,7 +77,8 @@ function login(currentUserName) {
 
 // Set up
 var menu;
-var total = 0;
+var discount = 0.0;
+const tax = 0.13;
 addCartQuantity();
 
 $.ajax({
@@ -65,10 +96,44 @@ function loadMenu(data) {
   menu = data;
 
   getCartItems(menu);
+
+  //On coupon code changed
+  $("#couponCode").change(function() {
+    console.log("CHANGE");
+    $("#couponBtn").trigger("change");
+  });
+
+  //Set coupon btn functions
+  $("#couponBtn").change(function() {
+    $(this).removeClass("inactive-btn");
+    $(this).addClass("btn");
+    $(this).attr("disabled", false);
+
+    $(this).click(function() {
+      const code = $("#couponCode").val();
+
+      if (code.includes("CODE")) {
+        discount = parseInt(code.substring(4, 6));
+      } else {
+        alert("Invalid coupon code.");
+      }
+
+      getCartItems(menu);
+      $(this).removeClass("btn");
+      $(this).addClass("inactive-btn");
+      $(this).attr("disabled", true);
+    });
+  });
 }
 
 function getCartItems(menuList) {
+  var total = 0;
   var cart = [];
+
+  //reset cart
+  $("#cartListContainer").empty();
+  $("#cartListContainer").append('<div class="row"><div class="cart-col-first"><h2 class="cart-item-title">Item</h2></div><div class="cart-col-second"><h2 class="cart-item-title">Name</h2></div><div class="cart-col-third"><h2 class="cart-item-title">Amount</h2></div><div class="cart-col-fourth"><h2 class="cart-item-title">Price</h2></div><div class="cart-col-fourth"></div></div><hr class="cart-divider">');
+
   console.log("DATA : " + menuList);
   if ("cart" in localStorage) {
     cart = JSON.parse(localStorage.getItem("cart"));
@@ -86,13 +151,15 @@ function getCartItems(menuList) {
       var itemId = cart[i].itemId - 1;
       console.log("ID : " + itemId);
       console.log("Image name : " + menuList[itemId].Image);
-      $("#cartRow" + i).append('<div class="cart-col-first">' + '<div class="cart-img" style="background-image: url(' + menuList[itemId].Image + ');"></div>');
+      $("#cartRow" + i).append('<div class="cart-col-first">' + '<img class="meal-image" src="' + menuList[itemId].Image + '"></div>');
       $("#cartRow" + i).append('<div class="cart-col-second"><h2 class="cart-item-title">' + cart[i].itemName + '</h2><p id="priceOfItem' + i + '">$' + cart[i].itemPrice + '</p></div>');
       $("#cartRow" + i).append('<div class="cart-col-third"><div class="adj"><h2 class="cart-item-title qty-h1">Qty:</h2><input id="itemQty' + i + '" class="cart-qty-inp" type="text" name="item-qty-' + i + '" value="' + cart[i].quantity + '"></div></div>');
       console.log("Curr Quantity : " + $("#itemQty" + i).val());
 
+      //Get total price
       var totalPrice = cart[i].itemPrice * cart[i].quantity;
       total += totalPrice;
+
       $("#cartRow" + i).append('<div class="cart-col-fourth"><h2 id="itemCumulative' + i + '" class="cart-item-title qty-h1">$' + totalPrice + '</h2></div>');
       $("#cartRow" + i).append('<div class="cart-col-fourth"><button id="itemBtn' + i + '" class="inactive-btn update-btn" type="button" name="button' + i + '">Update Cart</button></div>');
       $("#cartListContainer").append('<hr class="cart-divider">');
@@ -118,32 +185,60 @@ function getCartItems(menuList) {
           $(this).addClass("inactive-btn");
           $(this).attr("disabled", true);
         });
-
       });
 
-      $("#cartTotalCost").text("$" + total);
+      $("#cartPriceCost").text("$" + total);
 
+      //Calculate cost/discount/tax/total
+      var discountAmount = total * (discount / 100);
+      discountAmount = discountAmount.toFixed(2);
+      $("#cartDiscountCost").text("-$" + discountAmount);
+      //TAX
+      var taxAmount = total * tax;
+      taxAmount = taxAmount.toFixed(2);
+      $("#cartTaxCost").text("$" + taxAmount);
+      var bill = (total - discountAmount) + parseFloat(taxAmount);
+      $("#cartTotalCost").text("$" + bill.toFixed(2));
     }
   }
 }
 
 function updateCart(index, newQuantity) {
+  console.log("Updating");
 
   var cartBefore = JSON.parse(localStorage.getItem("cart"));
   console.log("qty : " + newQuantity);
   console.log(cartBefore[index]);
 
-  cartBefore[index].quantity = parseInt(newQuantity);
-  localStorage.setItem("cart", JSON.stringify(cartBefore));
-
-  $("#itemCumulative" + index).text("$" + cartBefore[index].itemPrice * newQuantity);
-
-  total = 0;
-  for (i = 0; i < cartBefore.length; i++) {
-    total += parseInt($("#itemCumulative" + i).text().substring(1));
+  if (newQuantity < 0) {
+    alert("Cannot update value");
+    getCartItems(menu);
+  } else if (newQuantity == 0) {
+    var removeItem = confirm("Do you want to remove item from cart?");
+    if (removeItem) {
+      cartBefore.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cartBefore));
+    }
+    getCartItems(menu);
+  } else if (newQuantity > 0) {
+    var updateItem = confirm("Do you want to update cart?");
+    if (updateItem) {
+      cartBefore[index].quantity = parseInt(newQuantity);
+      localStorage.setItem("cart", JSON.stringify(cartBefore));
+      $("#itemCumulative" + index).text("$" + cartBefore[index].itemPrice * newQuantity);
+    }
+    getCartItems(menu);
+  } else {
+    alert("Invalid input");
+    getCartItems(menu);
   }
-
-  $("#cartTotalCost").text("$" + total);
+  //
+  // total = 0;
+  // for (i = 0; i < cartBefore.length; i++) {
+  //   total += parseInt($("#itemCumulative" + i).text().substring(1));
+  // }
+  //
+  // $("#cartTotalCost").text("$" + total);
 
 }
 
@@ -174,7 +269,9 @@ function confirmOrder() {
   var phone = document.forms["cartForm"]["phone"].value;
   var address = document.forms["cartForm"]["address"].value;
   var cardNumber = document.forms["cartForm"]["cardNumber"].value;
-  var expiryDate = document.forms["cartForm"]["expiryDate"].value;
+  //var expiryDate = document.forms["cartForm"]["expiryDate"].value;
+  var expiryMonth = document.forms["cartForm"]["monthList"].value;
+  var expiryYear = document.forms["cartForm"]["yearList"].value;
   var cvv = document.forms["cartForm"]["cvv"].value;
 
   var today = new Date();
@@ -190,12 +287,34 @@ function confirmOrder() {
   newReceipt.email = email;
   newReceipt.phone = phone;
   newReceipt.address = address;
-  newReceipt.cardNumber = cardNumber;
-  newReceipt.expiryDate = expiryDate;
-  newReceipt.cvv = cvv;
+
+  if (cardNumber.length != 16) {
+    alert("Enter valid card number.");
+    return false;
+  } else {
+    newReceipt.cardNumber = cardNumber;
+  }
+
+  if (expiryMonth == "" || expiryYear == "") {
+    alert("Enter valid expire date.");
+    return false;
+  } else {
+    console.log(expiryMonth);
+    console.log(expiryYear);
+    newReceipt.expiryDate = expiryMonth + "/" + expiryYear;
+  }
+
+  if (cvv.length != 3) {
+    alert("Enter valid security code.");
+    return false;
+  } else {
+    newReceipt.cvv = cvv;
+  }
+
   newReceipt.date = today;
   newReceipt.time = time;
-  newReceipt.totalCost = parseInt($("#cartTotalCost").text().substring(1));
+  console.log("Total cost" + $("#cartTotalCost").text().substring(1));
+  newReceipt.totalCost = parseFloat($("#cartTotalCost").text().substring(1));
 
   newReceipt.cart = JSON.parse(localStorage.getItem("cart"));
 
@@ -218,6 +337,8 @@ function confirmOrder() {
     $("#confirmBtn").removeClass("btn");
     $("#confirmBtn").addClass("inactive-btn");
     $("#confirmStatus").text("Confirmed Order - " + today + " " + time);
+
+    moveToConfirmForm(newReceipt);
 
     //Empty cart
     localStorage.removeItem("cart");

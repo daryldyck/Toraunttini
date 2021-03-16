@@ -588,7 +588,7 @@ nav .icon-burger .line {
     transition: transform 0.75s;
 }
 
-form input {
+form input, form select, select , input{
     width: 100%;
     height: 30px;
     margin-top: 5px;
@@ -598,7 +598,7 @@ form input {
     box-shadow: 0 -0.5px 3px rgba(0, 0, 0, 0.05), 0 2px 2px rgba(0, 0, 0, 0.05), 0 4px 4px rgba(0, 0, 0, 0.05);
 }
 
-form input:focus {
+form input:focus, form select:focus, select:focus , input:focus{
     border: none;
     outline: 1px solid #ff00d4;
     box-shadow: 0 -0.5px 3px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11);
@@ -719,6 +719,14 @@ form a {
     padding: 10px 0;
 }
 
+.query-container input {
+  width: auto;
+}
+
+.query-container select {
+  width: auto;
+}
+
 .query-label {
     padding: 0 20px;
     text-align: center;
@@ -785,6 +793,20 @@ form a {
     box-shadow: 0 -0.5px 3px rgba(0, 0, 0, 0.20), 0 2px 2px rgba(0, 0, 0, 0.20), 0 4px 4px rgba(0, 0, 0, 0.20);
 }
 
+.menu-item-row {
+    position: relative;
+    padding: 15px 10px;
+    box-shadow: 0 -0.5px 3px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11), 0 4px 4px rgba(0, 0, 0, 0.11), 0 8px 8px rgba(0, 0, 0, 0.11), 0 16px 16px rgba(0, 0, 0, 0.11);
+    cursor: pointer;
+    transition: 0.5s;
+    margin: 0;
+}
+
+.menu .menu-item-row:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 -0.5px 3px rgba(0, 0, 0, 0.20), 0 2px 2px rgba(0, 0, 0, 0.20), 0 4px 4px rgba(0, 0, 0, 0.20);
+}
+
 .menu-item-img {
     width: 150px;
     height: 150px;
@@ -792,14 +814,32 @@ form a {
     padding-bottom: 20px;
 }
 
-.menu-item .menu-item-title {
+.menu-item-title {
     font-size: 18px;
     color: #000;
+}
+
+.menu-row-item-title {
+    font-size: 18px;
+    color: #000;
+    text-align: left;
+}
+
+.menu-row-item-desc {
+  color: grey;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .menu-item .menu-item-price {
     font-size: 18px;
     color: #ff00d4;
+}
+
+.menu-row-item-price {
+  font-size: 18px;
+  color: #ff00d4;
 }
 
 .menu-item .ratings {
@@ -825,7 +865,11 @@ form a {
 /*-- Meal --*/
 .meal-image {
     width: 45%;
+}
 
+.cart-col-first .meal-image {
+    height: 100px;
+    width: 100px;
 }
 
 .meal-item-col {
@@ -835,15 +879,40 @@ form a {
 
 .meal-item-price {
     text-align: center;
-    font-size: 18px;
+    font-size: 24px;
     color: #ff00d4;
+    padding: 10px 0;
 }
 
 .meal-item-desc {
     color: grey;
+    padding: 15px;
+}
+
+.meal-ratings {
+  padding: 10px 0;
+}
+
+#mealDescription input {
+
+  width: 75px;
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+#mealDescription .btn {
+  width: 80%;
 }
 
 /* --------------- CART--------------- */
+
+.container {
+    max-width: 1080px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
 
 .cart-container {
     width: 100%;
@@ -862,14 +931,14 @@ form a {
     position: relative;
     text-align: center;
     padding: 20px 0;
-    margin: auto;
+    margin: 10px;
     overflow: scroll;
     transition: 0.5s;
 }
 
 .cart-info-container {
     width: 300px;
-    height: 450px;
+    height: 500px;
     position: relative;
     text-align: center;
     padding: 20px 0;
@@ -895,6 +964,11 @@ form a {
 .cart-item-title {
     font-size: 18px;
     color: #000;
+}
+
+.cart-item-subtitle {
+    font-size: 18px;
+    color: #c1c1c1;
 }
 
 .cart-img {
@@ -943,6 +1017,15 @@ form a {
     /* margin: 20px 20px; */
 }
 
+.cart-col-fourth h4 {
+    flex-basis: 10%;
+    /* margin: 20px 20px; */
+}
+
+.bill-cost {
+  text-align: right;
+}
+
 .cart-divider {
     margin: 20px 0;
     width: 100%;
@@ -983,6 +1066,10 @@ form a {
     transition: 0.5s;
 }
 
+.coupon-btn {
+  margin-top: 0;
+}
+
 .update-btn {
     padding: 0 10px;
 }
@@ -999,7 +1086,16 @@ form .inactive-btn {
     margin-bottom: 0px;
     width: 100%;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 0px;
+}
+
+#cartForm #couponBtn {
+  margin-top: 0px;
+}
+
+#cartConfirmForm {
+    margin: 20px;
+    left: 300px;
 }
 
 .total-row {
@@ -1061,6 +1157,23 @@ form .inactive-btn {
 
 .history-col-fourth h2 {
     width: 100px;
+}
+
+/* CONTACT */
+.contact-container {
+    text-align: center;
+    width: 800px;
+    height: fit-content;
+    margin-bottom: 50px;
+}
+
+/* MAP */
+#map {
+  margin: 20px;
+  height: 300px;
+  /* The height is 400 pixels */
+  width: 300px;
+  /* The width is the width of the web page */
 }
 
 /* --------------- RESPONSIVE SCREEN ADJSUTMENTS--------------- */
@@ -1134,11 +1247,31 @@ form .inactive-btn {
     .cart-list-container {
         width: 100%;
     }
+
+    .meal-item-col {
+      flex-basis: 100%;
+    }
+
+    .cart-info-container {
+      margin-top: 10px;
+    }
+
+    .total-row {
+      width: 90%;
+    }
 }
 
 @media screen and (max-width: 500px) {
     .about h2 {
         font-size: 20px;
+    }
+
+    .cart-list-container {
+        width: 90%;
+    }
+
+    .total-row {
+      width: 90%;
     }
 }
 
