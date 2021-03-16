@@ -1020,7 +1020,7 @@ form a {
 
 .cart-col-fourth {
     text-align: center;
-    flex-basis: 10%;
+    flex-basis: auto;
     /* margin: 20px 20px; */
 }
 
@@ -1103,6 +1103,10 @@ form .inactive-btn {
 #cartConfirmForm {
     margin: 20px;
     left: 300px;
+}
+
+#spacer {
+  width: 80px;
 }
 
 .total-row {
@@ -1252,7 +1256,7 @@ form .inactive-btn {
     }
 
     .cart-list-container {
-        width: 100%;
+        flex-basis: 100%;
     }
 
     .meal-item-col {
@@ -1264,13 +1268,66 @@ form .inactive-btn {
     }
 
     .total-row {
-        width: 90%;
+        flex-basis: 100%;
+        margin: 0;
+    }
+
+    .cart-col-first, .cart-col-second {
+      flex-basis: 50%;
+    }
+
+    .cart-col-third {
+      flex-basis: 100%;
+      margin: 5px 0;
+    }
+
+    .cart-col-third .adj{
+      width: 100%;
+    }
+
+    .cart-col-third h2 {
+      padding: 0;
+    }
+
+    .cart-col-fourth {
+      flex-basis: 100%;
+      margin: 10px;
+    }
+
+    #cart-label-price {
+      visibility: hidden;
+      height: 0;
+    }
+
+    .menu-item-row a .ratings {
+      flex-basis: 100%;
+      margin-top: 10px;
+    }
+
+}
+
+@media screen and (max-width: 650px) {
+    #labelTotal {
+      visibility: hidden;
+    }
+
+    .history-col-fourth {
+      flex-basis: 100%;
+    }
+
+    .history-col-fourth h2 {
+      width: auto;
+      margin-top: 15px;
     }
 }
 
 @media screen and (max-width: 600px) {
     .cart-list-container {
         width: 90%;
+    }
+
+    .cart-col-fourth {
+      flex-basis: 100%;
     }
 
 
@@ -1285,10 +1342,27 @@ form .inactive-btn {
         width: 90%;
     }
 
-    .total-row {
-        width: 90%;
+
+    .history-col-first {
+      flex-basis: 50%;
     }
 
+    .history-col-second {
+      flex-basis: 50%;
+    }
+
+    .history-col-third {
+      flex-basis: 100%;
+      margin-top: 20px;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    #cart-label-amount {
+      visibility: hidden;
+      height: 0;
+    }
 }
 
 @media screen and (max-width: 400px) {
