@@ -10,13 +10,15 @@ ___
 ## About The Project
 ### Website Framework & CSS Design/Color Scheme
 ##### By Daryl Dyck
-- Logo & FavIcon by Daryl Dyck
+**Features include:**
+- HTML / CSS / Javascript (JQuery)
+- Logo & FavIcon
 ___
 ### Main Page
 ##### By Daryl Dyck
 
 **Features include:**
-- HTML / JavaScript (JQuery, Ajax)
+- HTML / CSS / JavaScript (JQuery, Ajax)
 - Slide Show (5 second delay - starts over when individual section is clicked)
 - Feature section loaded dynamically from JSON
 - Responsive design for mobile
@@ -31,7 +33,7 @@ ___
 ##### By Brian Domingo
 
 **Features include:**
-- Cart Qty updated in auth.js for each html file
+- Cart qty updated in auth.js for each html file
 ___
 ### Contact Page
 ##### By Brian Domingo
@@ -43,6 +45,7 @@ ___
 ##### By Daryl Dyck
 
 **Features include:**
+- HTML / CSS
 - Website author info
 - Responsive design for mobile
 ___
@@ -50,7 +53,7 @@ ___
 ##### By Daryl Dyck
 
 **Features include:**
-- HTML / JavaScript (JQuery)
+- HTML / CSS / JavaScript (JQuery)
 - Login/Registration in slider view
 - Users saved in localStorage
 - Auth.js added to each html file to authenticate upon initial load.
