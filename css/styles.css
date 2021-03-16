@@ -1268,6 +1268,14 @@ form .inactive-btn {
     }
 }
 
+@media screen and (max-width: 600px) {
+    .cart-list-container {
+        width: 90%;
+    }
+
+
+}
+
 @media screen and (max-width: 500px) {
     .about h2 {
         font-size: 20px;
@@ -1280,6 +1288,7 @@ form .inactive-btn {
     .total-row {
         width: 90%;
     }
+
 }
 
 @media screen and (max-width: 400px) {
