@@ -156,7 +156,7 @@ function getCartItems(menuList) {
 
   //reset cart
   $("#cartListContainer").empty();
-  $("#cartListContainer").append('<div class="row"><div class="cart-col-first"><h2 class="cart-item-title">Item</h2></div><div class="cart-col-second"><h2 class="cart-item-title">Name</h2></div><div id="cart-label-amount" class="cart-col-third"><h2 class="cart-item-title">Amount</h2></div><div class="cart-col-fourth" id="cart-label-price"><h2 class="cart-item-title">Price</h2></div><div class="cart-col-fourth" id="spacer"></div></div><hr class="cart-divider">');
+  $("#cartListContainer").append('<div id="cart-headers" class="row"><div class="cart-col-first"><h2 class="cart-item-title">Item</h2></div><div class="cart-col-second"><h2 class="cart-item-title">Name</h2></div><div id="cart-label-amount" class="cart-col-third"><h2 class="cart-item-title">Amount</h2></div><div class="cart-col-fourth" id="cart-label-price"><h2 class="cart-item-title">Price</h2></div><div class="cart-col-fourth" id="spacer"></div></div><hr class="cart-divider">');
 
   console.log("DATA : " + menuList);
   if ("cart" in localStorage) {
