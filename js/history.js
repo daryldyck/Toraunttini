@@ -3,26 +3,23 @@
 
 // Group 7
 // Brian Domingo - 101330689
-// Daryl Dyck - 101338429 
+// Daryl Dyck - 101338429
 
 console.log("history.js");
 
 var userList = [];
 
 // Get current user info
-if ("toraunttini_userList" in localStorage)
-{
+if ("toraunttini_userList" in localStorage) {
   userList = JSON.parse(localStorage.getItem("toraunttini_userList"));
 }
 
-if ("toraunttini_currentUser" in localStorage)
-{
+if ("toraunttini_currentUser" in localStorage) {
   var currentUserName = localStorage.getItem("toraunttini_currentUser");
   login(currentUserName);
 }
 
-function login(currentUserName)
-{
+function login(currentUserName) {
   console.log("login: " + currentUserName);
   localStorage.setItem("toraunttini_currentUser", currentUserName);
   currentUser = userList.find(elem => elem.username === currentUserName);
@@ -34,25 +31,22 @@ function login(currentUserName)
   document.getElementById("nav-login").href = "account.html";
 }
 
-function getHistory(user)
-{
+function getHistory(user) {
   console.log("Username : " + user.username);
 
-  for (i = 0; i < user.purchases.length; i++)
-  {
+  for (i = 0; i < user.purchases.length; i++) {
     var cartHistory = user.purchases[i];
     console.log(cartHistory.date);
 
     //Add row
     $("#historyListContainer").append('<div id="historyRow' + i + '" class="row"></div>');
     $("#historyRow" + i).append('<div class="history-col-first"><h2 id="historyDate" class="cart-item-title">' + cartHistory.date + " " + cartHistory.time + '</h2></div>');
-    $("#historyRow" + i).append('<div id="historyItems' + i + '" class="history-col-second"></div>');
+    $("#historyRow" + i).append('<div id="historyItems' + i + '" class="history-col-second" ></div>');
     $("#historyRow" + i).append('<div class="history-col-third"><h2 id="historyCard" class="cart-item-title">' + cartHistory.cardNumber + '</h2></div>');
-    $("#historyRow" + i).append('<div class="history-col-fourth"><h2 id="historyTotal" class="cart-item-title">$' + cartHistory.totalCost + '</h2></div>');
+    $("#historyRow" + i).append('<div class="history-col-fourth"><h2 id="historyTotal" class="cart-item-title" style="color: #ff00d4;">$' + cartHistory.totalCost + '</h2></div>');
     $("#historyListContainer").append('<hr class="cart-divider">');
 
-    for (j = 0; j < cartHistory.cart.length; j++)
-    {
+    for (j = 0; j < cartHistory.cart.length; j++) {
       $("#historyItems" + i).append('<p style = "color: grey;" >- ' + cartHistory.cart[j].itemName + " (x" + cartHistory.cart[j].quantity + ')</p>');
     }
   }
