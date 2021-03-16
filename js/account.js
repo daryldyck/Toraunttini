@@ -1,3 +1,10 @@
+// Web Development Fundamentals - MADS4007
+// Toraunttini Restuarant & Martini Bar
+
+// Group 7
+// Brian Domingo - 101330689
+// Daryl Dyck - 101338429 
+
 var userList = [];
 var currentUser;
 
@@ -51,7 +58,6 @@ function saveAccount()
   currentUser.phone = phone;
   currentUser.address = address;
 
-  //userList.push(newUser);
   localStorage.setItem("toraunttini_userList", JSON.stringify(userList));
   alert("Your account has been saved.");
 }
