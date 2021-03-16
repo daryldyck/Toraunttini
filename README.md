@@ -11,8 +11,6 @@ ___
 ### Website Framework & CSS Design/Color Scheme
 ##### By Daryl Dyck
 
-**Features include:**
-- 
 ___
 ### Main Page
 ##### By Daryl Dyck
