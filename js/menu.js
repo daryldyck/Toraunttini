@@ -1,3 +1,10 @@
+// Web Development Fundamentals - MADS4007
+// Toraunttini Restuarant & Martini Bar
+
+// Group 7
+// Brian Domingo - 101330689
+// Daryl Dyck - 101338429 
+
 // ------------------ LOAD MENU FOR FEATURE ------------------
 const menuURL = "https://gist.githubusercontent.com/skd09/8d8a685ffbdae387ebe041f28384c13c/ra/26e97cec1e18243e3d88c90d78d2886535a4b3a6/menu.json"
 var featuresQty = 12;
