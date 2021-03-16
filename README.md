@@ -27,19 +27,39 @@ ___
 ##### By Brian Domingo
 
 **Features include:**
-- 
+- HTML / CSS / JavaScript (JQuery)
+- Search bar checks menu items by name
+- Sort criteria to determine how items are displayed
+___
+### Meal Page
+##### By Brian Domingo
+
+**Features include:**
+- HTML / CSS / JavaScript (JQuery)
+- Saves item to cart in localStorage
+___
+### History Page
+##### By Brian Domingo
+
+**Features include:**
+- HTML / CSS / JavaScript (JQuery)
+- Displays all saved purchases on account saved in localStorage.
 ___
 ### Cart Page
 ##### By Brian Domingo
 
 **Features include:**
+- HTML / CSS / JavaScript (JQuery)
 - Cart qty updated in auth.js for each html file
+- Uses localStorage to update cart and save purchase to user
 ___
 ### Contact Page
 ##### By Brian Domingo
 
 **Features include:**
-- 
+- HTML / CSS / JavaScript 
+- Google Map API to display restaurant location
+- Direct call using phone number
 ___
 ### About Page
 ##### By Daryl Dyck
