@@ -9,6 +9,10 @@ if ("toraunttini_currentUser" in localStorage) {
   var currentUserName = localStorage.getItem("toraunttini_currentUser");
   currentUser = userList.find(elem => elem.username === currentUserName);
 }
+else
+{
+    window.location.href = "./index.html";
+}
 
 loadAccountDeatils();
 addCartQuantity();
@@ -99,3 +103,8 @@ function addCartQuantity() {
 
 password.onchange = validatePassword;
 confirmPassword.onkeyup = validatePassword;
+
+function history()
+{
+    window.location.href = "./history.html";
+}

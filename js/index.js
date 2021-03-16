@@ -98,7 +98,8 @@ function loadFeatures(data)
 function addFeature(dish)
 {
     $("#featuresItems").append('<div class="feature-col" id="featureCol' + dish.Id + '"></div>');
-    $("#featureCol" + dish.Id).append('<div class="feature-item" id="featureItem' + dish.Id + '"></div>');
+    $("#featureCol" + dish.Id).append('<a href="meal.html?mealId=' + dish.Id +
+        '"><div class="feature-item" id="featureItem' + dish.Id + '"></div></a>');
 
     $("#featureItem" + dish.Id).append('<img src="' + dish.Image + '" class="feature-img">');
     $("#featureItem" + dish.Id).append('<h3 class="feature-title">' + dish.Title + '</h3>');
