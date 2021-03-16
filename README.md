@@ -20,7 +20,7 @@ ___
 **Features include:**
 - HTML / CSS / JavaScript (JQuery, Ajax)
 - Slide Show (5 second delay - starts over when individual section is clicked)
-- Feature section loaded dynamically from JSON
+- Feature section - random dishes loaded dynamically from API
 - Responsive design for mobile
 ___
 ### Menu Page
