@@ -42,9 +42,15 @@ function loadMeal(data) {
   $('#mealDisplay').append('<div id="mealDescription" class="meal-item-col"><p class="meal-item-price">$' + meal.Price + '</p></div>');
   addRatings(meal);
   $('#mealDescription').append('<p class="meal-item-desc">' + meal.Description + '</p>');
-  $('#mealDescription').append('<input id="itemQuantity" type="number" name="quantity" placeholder="0"><br>');
+  $('#mealDescription').append('<input id="itemQuantity" type="number" name="quantity" placeholder="1" value="1"><br>');
 
-  $('#mealDescription').append('<button class="btn" id="addButton" type="button" class="btn btn-primary">Add to cart</button>');
+  $('#mealDescription').append('<button class="btn" id="addButton" type="button" class="btn" style="width: 100%;">Add to cart</button>');
+  //If meal not Available
+  if (meal.Available == 0) {
+    $("#addButton").removeClass("btn");
+    $("#addButton").addClass("inactive-btn");
+    $("#addButton").attr("disabled", true);
+  }
 
   $("#addButton").click(function() {
     if ($("#itemQuantity").val() > 0) {
@@ -110,7 +116,7 @@ function addCartQuantity() {
 }
 
 function addRatings(dish) {
-  $("#mealDescription").append('<div class="ratings" id="ratings' + dish.Id + '"></div>');
+  $("#mealDescription").append('<div class="ratings meal-ratings" id="ratings' + dish.Id + '"></div>');
 
   var fullRating = 5;
 

@@ -23,7 +23,6 @@
     <!-- --------------- NAV MENU--------------- -->
     <div class="navBar navBar2">
       <div class="navBar-container">
-
         <div class="navBar-logo">
           <a href="index.html"><img src="images/logo.svg">
             <h3>Restuarant & Martini Bar</h3>
@@ -70,40 +69,43 @@
           <hr class="title-decor">
         </div>
 
-        <div class="query-container">
-          <h2 class="query-label">Search:</h2>
-          <input type="text" name="searchName">
-          <h2 class="query-label">Sort by:</h2>
-          <select class="sort-list" name="sortList">
-            <option value="Name(A-Z)">Name(A-Z)</option>
-            <option value="Name(Z-A)">Name(Z-A)</option>
-            <option value="Price(Asc.)">Price(Asc.)</option>
-            <option value="Price(Des.)">Price(Des.)</option>
-            <option value="Rating(Asc.)">Rating(Asc.)</option>
-            <option value="Rating(Des.)">Rating(Des.)</option>
-            <option value="Availability">Availability</option>
-          </select>
-          <button class="search-button" type="button" name="button">Search</button>
+        <div class="row query-container">
+          <div class="row">
+            <h2 class="query-label">Search:</h2>
+            <input id="searchTextBox" type="text" name="searchName">
+
+          </div>
+          <div class="row">
+            <h2 class="query-label">Sort by:</h2>
+            <select id="sortList" class="sort-list" name="sortList">
+              <option value="Category" active>Category</option>
+              <option value="Name(A-Z)">Name(A-Z)</option>
+              <option value="Name(Z-A)">Name(Z-A)</option>
+              <option value="Price(Asc.)">Price(Asc.)</option>
+              <option value="Price(Des.)">Price(Des.)</option>
+              <option value="Rating(Asc.)">Rating(Asc.)</option>
+              <option value="Rating(Des.)">Rating(Des.)</option>
+              <option value="Availability">Availability</option>
+            </select>
+
+          </div>
+          <button id="searchBtn" class="btn search-button" type="button" name="button">Search</button>
         </div>
 
         <div class="row">
           <div class="box menu-container">
             <!-- --------------- FEATURE--------------- -->
-            <div class="feature" id="featuresContainer">
+            <div class="cart-container" style="padding-top: 0;" id="featuresContainer">
               <div id="menuDisplay" class="container">
-
-                <!--
-                <div class="row" id="featuresItems">
-                  Features added here... via Javascript
-                </div>
-                -->
+                <!-- Add menu items here -->
               </div>
             </div>
           </div>
         </div>
-
-
       </div>
+
+
+    </div>
     </div>
 
 
